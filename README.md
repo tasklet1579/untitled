@@ -44,4 +44,4 @@
 
 # 🎓 수료증
 
-![woowa](file/e59293bc-485c-4599-b8ab-1db229ab4b83.jpg)
+![woowa](file/90f15e16-5ecf-4b0d-a5aa-944bcb965aac.jpg)
