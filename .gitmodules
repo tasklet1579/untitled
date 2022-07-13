@@ -1,0 +1,3 @@
+[submodule "step1/java-lotto-pro"]
+	path = step1/java-lotto-pro
+	url = https://github.com/tasklet1579/java-lotto-pro.git
