@@ -50,6 +50,6 @@
 
 ​
 
-# 🎓 교육 수료증
+# 🎓 수료증
 
 ![woowa](file/90f15e16-5ecf-4b0d-a5aa-944bcb965aac.jpg)
