@@ -43,5 +43,12 @@ Behaviour-Driven Development
 ```
 import static org.assertj.core.api.Assertions.catchThrowable;
 
-Throwable thrown = catchThrowable(() -> { throw new Exception("boom!"); });
+@DisplayName("위치 값을 벗어나면 Exception 이 발생한다.")
+@Test
+void charAt_throwException_givenIndexGreaterThanLength() {
+    Throwable thrown = catchThrowable(() -> { throw new ...  });
+    
+    assertThat(thrown).isInstanceOf(IndexOutOfBoundsException.class)
+                      .hasMessageContaining("...");
+}
 ```
