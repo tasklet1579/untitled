@@ -55,4 +55,6 @@ void charAt_throwException_givenIndexGreaterThanLength() {
 
 ### ✏️ JUnit 5 Parameterized Tests
 
-다른 값을 사용하여 하나의 테스트 코드를 여러번 반복 
+다른 값을 사용하여 하나의 테스트 코드를 반복해서 실행할 수 있다. 
+
+@ParameterizedTest 를 추가하는 것을 제외하고는 다른 테스트와 동일하다.
