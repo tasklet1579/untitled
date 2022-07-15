@@ -28,7 +28,7 @@
 
 ## 💡 주차별 미션
 
-✔️ 1주차 : 학습 테스트 실습 : [미션 설명](docs/step1/calculator/readme.md), [내용 정리](docs/step1/CALC_SUM.md), 소스 코드
+✔️ 1주차 : 학습 테스트 실습 : [미션 설명](docs/step1/study/readme.md), [내용 정리](docs/step1/study/summary.md), [소스 코드](https://github.com/tasklet1579/java-lotto-pro)
 
 ✔️ 1주차 : 문자열 덧셈 계산기 : [미션 설명](docs/step1/CALC_DESC.md), [내용 정리](docs/step1/CALC_SUM.md), 소스 코드 
 
