@@ -52,3 +52,7 @@ void charAt_throwException_givenIndexGreaterThanLength() {
                       .hasMessageContaining("...");
 }
 ```
+
+### ✏️ JUnit 5 Parameterized Tests
+
+다른 값을 사용하여 하나의 테스트 코드를 여러번 반복 
