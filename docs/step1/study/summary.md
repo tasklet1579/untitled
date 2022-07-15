@@ -1,4 +1,4 @@
-### AssertJ Exception Assertions
+### ✏️ AssertJ Exception Assertions
 
 AssertJ
 - assertion 을 제공하는 자바 라이브러리
