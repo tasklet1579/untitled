@@ -9,9 +9,9 @@ assertThatThrownBy
 ```
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-@DisplayName("특정 위치의 문자를 가져오도록 한다.")
+@DisplayName("위치 값을 벗어나면 Exception 이 발생한다.")
 @Test
-void charAt() {
+void charAt_throwException_givenIndexGreaterThanLength() {
     assertThatThrownBy(() -> {
         // ...
     }).isInstanceOf(IndexOutOfBoundsException.class)
@@ -23,10 +23,14 @@ assertThatExceptionOfType
 ```
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-assertThatExceptionOfType(IndexOutOfBoundsException.class)
-    .isThrownBy(() -> {
-        // ...
-}).withMessageMatching("Index: \\d+, Size: \\d+");
+@DisplayName("위치 값을 벗어나면 Exception 이 발생한다.")
+@Test
+void charAt_throwException_givenIndexGreaterThanLength() {
+    assertThatExceptionOfType(IndexOutOfBoundsException.class)
+        .isThrownBy(() -> {
+            // ...
+    }).withMessageMatching("Index: \\d+, Size: \\d+");
+}
 ```
 
 자주 발생하는 Exception 의 경우 아래의 메서드를 제공하고 있다.
@@ -34,3 +38,10 @@ assertThatExceptionOfType(IndexOutOfBoundsException.class)
 - assertThatIllegalStateException()
 - assertThatIOException()
 - assertThatNullPointerException()
+
+Behaviour-Driven Development
+```
+import static org.assertj.core.api.Assertions.catchThrowable;
+
+Throwable thrown = catchThrowable(() -> { throw new Exception("boom!"); });
+```
