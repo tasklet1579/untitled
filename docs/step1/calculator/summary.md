@@ -23,3 +23,4 @@ https://jojoldu.tistory.com/412
 ### ✏️ equals 및 hashCode
 책임과 역할을 분리
 
+### ✏️ 생성자 활용
