@@ -85,8 +85,14 @@ void isBlank_ShouldReturnTrueForNullOrBlankStrings(String input) {
   - String뿐만 아니라 Collection과 arrays에도 empty 값을 전달할 수 있다.
 - @NullAndEmptySource
   - null 값과 empty 값을 모두 전달하기 위해 사용할 수 있다.
+  - @ValueSource와 결합하여 문자열 값을 다양하게 전달할 수 있다.
 ```
-
+@ParameterizedTest
+@NullAndEmptySource
+@ValueSource(strings = {"  ", "\t", "\n"})
+void isBlank_ShouldReturnTrueForAllTypesOfBlankStrings(String input) {
+  assertTrue(Strings.isBlank(input));
+}
 ```
 
 Enum
