@@ -1,4 +1,4 @@
-![woowa](file/29e56b30-b506-4224-b034-7944958e19c6.jpg)
+![woowa](docs/image/29e56b30-b506-4224-b034-7944958e19c6.jpg)
 
 ## 🏫 우아한테크캠프 프로4th 후기
 
@@ -52,4 +52,4 @@
 
 # 🎓 수료증
 
-![woowa](file/90f15e16-5ecf-4b0d-a5aa-944bcb965aac.jpg)
+![woowa](docs/image/90f15e16-5ecf-4b0d-a5aa-944bcb965aac.jpg)
