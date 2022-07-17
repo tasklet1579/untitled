@@ -85,18 +85,60 @@ Test classes, test methods, and lifecycle methods는 public으로 선언할 필�
 
 일반적으로 어떤 특별한 이유가 없는 이상(다른 패키지로 확장한다든지, 테스트가 심플해진다든지) public 접근 제어자는 생략하는 편이다.
 
-### ✏️ 일급 컬렉션
+### ✏️ 구현 순서도 convention이다
 
-https://jojoldu.tistory.com/412
+클래스의 구현 순서에 대한 convention을 지키는 것도 읽기 좋은 코드를 구현하는데 의미가 있다.
 
+클래스의 구현 순서를 지키면서 프로그래밍한다.
 
-### ✏️ 의미있는 테스트 케이스
+```
+class A {
+    상수 (static final) 또는 클래스 변수
+    
+    인스턴스 변수
+    
+    생성자
+    
+    메서드
+}
+```
 
+### ✏️ 다양한 생성자 활용
 
-### ✏️ equals 및 hashCode 
+문자열 형태의 숫자를 파라미터로 갖는 생성자를 제공하면 불필요한 메서드 호출이 줄어들고 ?
 
+```
+public class Number {
+    private static final String NEGATIVE_NUMBERS_ARE_NOT_ALLOWED = "음수는 허용되지 않습니다.";
 
-### ✏️ equals 및 hashCode
-책임과 역할을 분리
+    private final int number;
 
-### ✏️ 생성자 활용
+    public Number(final int number) {
+        if (number < 0) {
+            throw new IllegalArgumentException(NEGATIVE_NUMBERS_ARE_NOT_ALLOWED);
+        }
+        this.number = number;
+    }
+
+    public Number(final String number) throws NumberFormatException {
+        this(readInt(number));
+    }
+
+    private static int readInt(String input) {
+        return Integer.parseInt(input);
+    }
+    
+    ...
+}
+```
+
+### ✏️ 책임과 역할 분리
+
+- Number : 0 또는 양의 정수를 가지는 도메인. 
+- Numbers : 문자열 덧셈 계산기 핵심 도메인. 숫자의 합을 반환하는 기능을 제공한다.
+- StringUtils : 문자열 관련 기능을 제공한다.
+  - null 또는 empty 문자열이 입력된 경우 "0"을 반환한다.
+  - 정상적인 문자열이 입력되지 않은 경우 Exception을 발생시킨다.
+- StringRegex : 숫자 이외의 값이 입력되었는지 확인한다.
+- StringSeparator : 구분자를 기준으로 문자열에서 숫자를 분리하고 String 배열로 반환한다.
+- StringAddCalculator : 문자열에서 숫자를 분리하고 각 숫자의 합을 반환한다.
