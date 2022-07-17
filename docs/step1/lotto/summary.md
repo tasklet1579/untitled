@@ -31,10 +31,10 @@ new 키워드를 사용하지 않아도 인스턴스를 생성할 수 있고 프
 
 getMethod를 사용하면 같은 이름의 메서드라도 파라미터의 설정에 따라서 호출을 다르게 할 수고 생성자 역시 다양하게 획득할 수 있는데 getMethod 이외에도 아래의 메서드를 사용할 수 있다.
 
-- getMethods : Object에서부터 해당 클래스까지 있는 모든 메서드를 찾습니다
-- getDeclaredMethods : 해당 클래스에 있는 메서드만을 찾습니다
+- getMethods : Object에서부터 해당 클래스까지 있는 모든 메서드를 찾는다.
+- getDeclaredMethods : 해당 클래스에 있는 메서드만을 찾는다.
 
-이 기능을 잘 활용하면 private이나 protected처럼 접근이 제한되어 있는 메서드도 실행할 수 있기 때문에 테스트에서 메서드의 결과를 확인할 수 있습니다
+이 기능을 잘 활용하면 private이나 protected처럼 접근이 제한되어 있는 메서드도 실행할 수 있기 때문에 테스트에서 메서드의 결과를 확인할 수 있다.
 
 Console에서는 Scanner는 정적으로 선언하였고 getDeclaredField로 sourceClosed 변수에 접근을 가능하게 하였는데 이렇게 프로그램 실행 도중 클래스의 멤버 변수에 접근해서 값을 확인하면 실제로 Scanner가 close 되었는지 알 수 있다.
 
