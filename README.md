@@ -32,7 +32,7 @@
 
 ✔️ 1주차 : 문자열 덧셈 계산기 : [미션 설명](docs/step1/calculator/readme.md), [내용 정리](docs/step1/calculator/summary.md), 소스 코드 
 
-✔️ 1주차 : TDD 기반 로또 구현 : [미션 설명](docs/step1/lotto/readme.md), 내용 정리, 소스 코드
+✔️ 1주차 : TDD 기반 로또 구현 : [미션 설명](docs/step1/lotto/readme.md), [내용 정리](docs/step1/lotto/summary.md), 소스 코드
 
 ✔️ 2주차 : JPA
 
