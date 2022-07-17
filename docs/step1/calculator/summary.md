@@ -38,8 +38,19 @@ footer는 선택 사항이므로 모든 커밋에 작성할 필요 없고 어떤
 
 > String.matches() 메서드는 Pattern.matches()를 이용하는데 Pattern.matches() 내부에서 Pattern 객체를 생성(compile)한 후 Matcher와 비교한 후 바로 GC 대상으로 바꿔버리기 때문이다.
 
-```
+미리 컴파일해두고 사용하면 비용을 줄일 수 있지 않을까?
 
+```
+import java.util.regex.Pattern;
+
+public class StringRegex {
+    private static final Pattern INVALID_STRING_PATTERN = Pattern.compile("[a-zA-Z가-힣]+");
+
+    public static boolean isInvalid(String input) {
+        return INVALID_STRING_PATTERN.matcher(input)
+                                     .find();
+    }
+}
 ```
 
 ### ✏️ 불필요한 객체 생성을 피하라
