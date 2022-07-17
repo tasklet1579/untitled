@@ -181,6 +181,24 @@ public class StringParams {
 ```
 
 ***Customizing Display Names***
+- @ParameterizedTest의 name 속성을 이용해서 Display Names를 커스터마이즈 할 수 있다.
+  - {displayName} is display name of the method
+  - {index} will be replaced with the invocation index. Simply put, the invocation index for the first execution is 1, for the second is 2, and so on.
+  - {arguments} is a placeholder for the complete, comma-separated list of arguments.
+  - {0}, {1}, ... are placeholders for individual arguments.
+```
+@ParameterizedTest(name = "{index} {0} is 30 days long")
+@EnumSource(value = Month.class, names = {"APRIL", "JUNE", "SEPTEMBER", "NOVEMBER"})
+void someMonths_Are30DaysLong(Month month) {
+    final boolean isALeapYear = false;
+    assertEquals(30, month.length(isALeapYear));
+}
 ```
 
+```
+someMonths_Are30DaysLong(Month)
+- 1 APRIL is 30 days long
+- 2 JUNE is 30 days long
+- 3 SEPTEMBER is 30 days long
+- 4 NOVEMBER is 30 days long
 ```
