@@ -99,7 +99,13 @@ class A {
     
     생성자
     
+    정적 메서드
+    
     메서드
+    
+    equals, hashCode, toString
+    
+    getter/setter
 }
 ```
 
