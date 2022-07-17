@@ -4,6 +4,8 @@
 import java.lang.reflect.Field;
 
 public class Console {
+    private static Scanner scanner;
+    
     ...
     
     private static boolean isClosed() {
