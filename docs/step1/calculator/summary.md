@@ -73,9 +73,17 @@ Java Pattern와 연결지어 생각해보자면 Pattern 객체를 사용할 때 
 
 [출처](https://github.com/java-squid/effective-java/issues/6#issuecomment-696519565)
 
-### ✏️ 불필요한 객체 생성을 피하라
+### ✏️ Class and method visibility
 
-https://junit.org/junit5/docs/current/user-guide/#writing-tests-classes-and-methods
+Test Class : any top-level class, static member class, or @Nested class
+
+Test Method : @Test, @RepeatedTest, @ParameterizedTest, @TestFactory, or @TestTemplate.
+
+Lifecycle Method : @BeforeAll, @AfterAll, @BeforeEach, or @AfterEach.
+
+Test classes, test methods, and lifecycle methods는 public으로 선언할 필요는 없지만 private으로 지정하면 안 된다.
+
+일반적으로 어떤 특별한 이유가 없는 이상(다른 패키지로 확장한다든지, 테스트가 심플해진다든지) public 접근 제어자는 생략하는 편이다.
 
 ### ✏️ 일급 컬렉션
 
