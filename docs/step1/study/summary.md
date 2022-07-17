@@ -60,9 +60,10 @@ void charAt_throwException_givenIndexGreaterThanLength() {
 @ParameterizedTest를 추가하는 것을 제외하고는 다른 테스트와 동일하다.
 
 *Simple Values*
-- 테스트 메서드에 값을 순서대로 하나씩 전달할 때 사용할 수 있다.
-- 지원하는 자료형은 다음과 같다.
-  - short, byte, int, long, float, double, char, java.lang.String, java.lang.Class
+- @ValueSource
+  - 테스트 메서드에 값을 순서대로 하나씩 전달할 때 사용할 수 있다.
+  - 지원하는 자료형은 다음과 같다.
+    - short, byte, int, long, float, double, char, java.lang.String, java.lang.Class
 ```
 public class Strings {
     public static boolean isBlank(String input) {
@@ -96,11 +97,43 @@ void isBlank_ShouldReturnTrueForAllTypesOfBlankStrings(String input) {
 ```
 
 Enum
+- @EnumSource
+  - 열거형 값을 테스트 메서드에 전달할 때 사용할 수 있다.
+  - names 속성
+    - 리터럴 문자열과 일치하는 열거형 값을 가진다. 
+    - 리터럴 문자열 외에도 정규 표현식을 속성에 전달할 수 있다.
+```
+@ParameterizedTest
+@EnumSource(Month.class) // passing all 12 months
+void getValueForAMonth_IsAlwaysBetweenOneAndTwelve(Month month) {
+  int monthNumber = month.getValue();
+  assertTrue(monthNumber >= 1 && monthNumber <= 12);
+}
 ```
 
 ```
+@ParameterizedTest
+@EnumSource(
+  value = Month.class,
+  names = {"APRIL", "JUNE", "SEPTEMBER", "NOVEMBER", "FEBRUARY"},
+  mode = EnumSource.Mode.EXCLUDE)
+void exceptFourMonths_OthersAre31DaysLong(Month month) {
+  final boolean isALeapYear = false;
+  assertEquals(31, month.length(isALeapYear));
+}
+```
 
-CSV Literals
+```
+@ParameterizedTest
+@EnumSource(value = Month.class, names = ".+BER", mode = EnumSource.Mode.MATCH_ANY)
+void fourMonths_AreEndingWithBer(Month month) {
+  EnumSet<Month> months = 
+    EnumSet.of(Month.SEPTEMBER, Month.OCTOBER, Month.NOVEMBER, Month.DECEMBER);
+  assertTrue(months.contains(month));
+}
+```
+
+`CSV Literals`
 ```
 
 ```
