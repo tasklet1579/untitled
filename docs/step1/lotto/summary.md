@@ -38,16 +38,24 @@ getMethod를 사용하면 같은 이름의 메서드라도 파라미터의 설�
 
 Console에서 Scanner는 정적으로 선언하였고 getDeclaredField로 sourceClosed 변수에 접근을 가능하게 하였는데 이렇게 프로그램 실행 도중 클래스의 멤버 변수에 접근해서 값을 확인하면 실제로 Scanner가 close 되었는지 알 수 있다.
 
-
 ### ✏️ 불변 객체
 
+방어적 복사3
+
+복사를 할 때 Arrays.asList를 사용하게 되면 Arrays의 이너 클래스인 ArrayList를 반환하게 되네요
+해당 클래스는 AbstractList를 상속하고 있고 add와 같은 메서드를 호출하면 UnsupportedOperationException 에러가 발생합니다
+불변 처리한 객체에 add와 같은 메서드를 만들지는 않겠지만.. 그런 경우가 발생할 수도 있을까요?
 
 ### ✏️ 일급 컬렉션
 
 https://jojoldu.tistory.com/412
 
-### ✏️ equals 및 hashCode
 
+
+static block 캐시
+
+
+### ✏️ ENUM
 
 ### ✏️ 책임과 역할 분리
 
