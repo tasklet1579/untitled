@@ -59,7 +59,7 @@ void charAt_throwException_givenIndexGreaterThanLength() {
 
 @ParameterizedTest를 추가하는 것을 제외하고는 다른 테스트와 동일하다.
 
-Simple Values
+*Simple Values*
 - 테스트 메서드에 값을 순서대로 하나씩 전달할 때 사용할 수 있다.
 - 지원하는 자료형은 다음과 같다.
   - short, byte, int, long, float, double, char, java.lang.String, java.lang.Class
