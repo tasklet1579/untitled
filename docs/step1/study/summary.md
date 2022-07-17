@@ -92,7 +92,7 @@ void isBlank_ShouldReturnTrueForNullOrBlankStrings(String input) {
 @NullAndEmptySource
 @ValueSource(strings = {"  ", "\t", "\n"})
 void isBlank_ShouldReturnTrueForAllTypesOfBlankStrings(String input) {
-  assertTrue(Strings.isBlank(input));
+    assertTrue(Strings.isBlank(input));
 }
 ```
 
@@ -106,20 +106,20 @@ void isBlank_ShouldReturnTrueForAllTypesOfBlankStrings(String input) {
 @ParameterizedTest
 @EnumSource(Month.class) // passing all 12 months
 void getValueForAMonth_IsAlwaysBetweenOneAndTwelve(Month month) {
-  int monthNumber = month.getValue();
-  assertTrue(monthNumber >= 1 && monthNumber <= 12);
+    int monthNumber = month.getValue();
+    assertTrue(monthNumber >= 1 && monthNumber <= 12);
 }
 ```
 
 ```
 @ParameterizedTest
 @EnumSource(
-  value = Month.class,
-  names = {"APRIL", "JUNE", "SEPTEMBER", "NOVEMBER", "FEBRUARY"},
-  mode = EnumSource.Mode.EXCLUDE)
+    value = Month.class,
+    names = {"APRIL", "JUNE", "SEPTEMBER", "NOVEMBER", "FEBRUARY"},
+    mode = EnumSource.Mode.EXCLUDE)
 void exceptFourMonths_OthersAre31DaysLong(Month month) {
-  final boolean isALeapYear = false;
-  assertEquals(31, month.length(isALeapYear));
+    final boolean isALeapYear = false;
+    assertEquals(31, month.length(isALeapYear));
 }
 ```
 
@@ -127,9 +127,9 @@ void exceptFourMonths_OthersAre31DaysLong(Month month) {
 @ParameterizedTest
 @EnumSource(value = Month.class, names = ".+BER", mode = EnumSource.Mode.MATCH_ANY)
 void fourMonths_AreEndingWithBer(Month month) {
-  EnumSet<Month> months = 
-    EnumSet.of(Month.SEPTEMBER, Month.OCTOBER, Month.NOVEMBER, Month.DECEMBER);
-  assertTrue(months.contains(month));
+    EnumSet<Month> months = 
+        EnumSet.of(Month.SEPTEMBER, Month.OCTOBER, Month.NOVEMBER, Month.DECEMBER);
+    assertTrue(months.contains(month));
 }
 ```
 
@@ -142,8 +142,8 @@ void fourMonths_AreEndingWithBer(Month month) {
 @ParameterizedTest
 @CsvSource({"test,TEST", "tEst,TEST", "Java,JAVA"})
 void toUpperCase_ShouldGenerateTheExpectedUppercaseValue(String input, String expected) {
-  String actualValue = input.toUpperCase();
-  assertEquals(expected, actualValue);
+    String actualValue = input.toUpperCase();
+    assertEquals(expected, actualValue);
 }
 ```
 
@@ -151,17 +151,36 @@ void toUpperCase_ShouldGenerateTheExpectedUppercaseValue(String input, String ex
 @ParameterizedTest
 @CsvSource(value = {"test:test", "tEst:test", "Java:java"}, delimiter = ':')
 void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(String input, String expected) {
-  String actualValue = input.toLowerCase();
-  assertEquals(expected, actualValue);
+    String actualValue = input.toLowerCase();
+    assertEquals(expected, actualValue);
 }
 ```
 
-*Method*
+***Method***
+- @MethodSource
+  - 복잡한 객체를 사용하여 전달하기 위해 Argument Source로 메서드를 사용한다.
+    - 하나의 단일 값을 사용하는 경우는 Arguments abstraction이 필요하지 않다.
+  - 이름을 지정하지 않으면 JUnit은 테스트 메서드명과 같은 메서드를 소스 코드에서 찾는다.
+  - 메서드를 이용하면 다른 테스트 클래스 간에 공유할 수 있기 때문에 재활용 측면에서 유용하다.
+```
+class StringsUnitTest {
+    @ParameterizedTest
+    @MethodSource("com.baeldung.parameterized.StringParams#blankStrings")
+    void isBlank_ShouldReturnTrueForNullOrBlankStringsExternalSource(String input) {
+        assertTrue(Strings.isBlank(input));
+    }
+}
 ```
 
 ```
+public class StringParams {
+    static Stream<String> blankStrings() {
+        return Stream.of(null, "", "  ");
+    }
+}
+```
 
-Customizing Display Names
+***Customizing Display Names***
 ```
 
 ```
