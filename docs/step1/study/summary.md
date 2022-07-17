@@ -78,7 +78,13 @@ void isBlank_ShouldReturnTrueForNullOrBlankStrings(String input) {
 }
 ```
 
-Null and Empty Values
+*Null and Empty Values*
+- @NullSource
+  - 원시 자료형은 null 값을 허용할 수 없으므로 사용할 수 없다.
+- @EmptySource
+  - String뿐만 아니라 Collection과 arrays에도 empty 값을 전달할 수 있다.
+- @NullAndEmptySource
+  - null 값과 empty 값을 모두 전달하기 위해 사용할 수 있다.
 ```
 
 ```
