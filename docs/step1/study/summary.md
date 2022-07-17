@@ -96,7 +96,7 @@ void isBlank_ShouldReturnTrueForAllTypesOfBlankStrings(String input) {
 }
 ```
 
-Enum
+*Enum*
 - @EnumSource
   - 열거형 값을 테스트 메서드에 전달할 때 사용할 수 있다.
   - names 속성
