@@ -5,7 +5,7 @@ AssertJ
 - 다양한 검증 메서드를 제공하고 있어서 테스트 코드를 더욱 쉽게 작성할 수 있다.
 - 메서드 체이닝을 지원하여 직관적인 테스트 흐름을 나타낼 수 있다.
 
-*assertThatThrownBy*
+***assertThatThrownBy***
 ```
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -19,7 +19,7 @@ void charAt_throwException_givenIndexGreaterThanLength() {
 }
 ```
 
-*assertThatExceptionOfType*
+***assertThatExceptionOfType***
 ```
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
@@ -39,7 +39,7 @@ void charAt_throwException_givenIndexGreaterThanLength() {
 - assertThatIOException()
 - assertThatNullPointerException()
 
-*Behaviour-Driven Development*
+***Behaviour-Driven Development***
 ```
 import static org.assertj.core.api.Assertions.catchThrowable;
 
@@ -59,7 +59,7 @@ void charAt_throwException_givenIndexGreaterThanLength() {
 
 @ParameterizedTest를 추가하는 것을 제외하고는 다른 테스트와 동일하다.
 
-*Simple Values*
+***Simple Values***
 - @ValueSource
   - 테스트 메서드에 값을 순서대로 하나씩 전달할 때 사용할 수 있다.
   - 지원하는 자료형은 다음과 같다.
@@ -79,7 +79,7 @@ void isBlank_ShouldReturnTrueForNullOrBlankStrings(String input) {
 }
 ```
 
-*Null and Empty Values*
+***Null and Empty Values***
 - @NullSource
   - 원시 자료형은 null 값을 허용할 수 없으므로 사용할 수 없다.
 - @EmptySource
@@ -96,7 +96,7 @@ void isBlank_ShouldReturnTrueForAllTypesOfBlankStrings(String input) {
 }
 ```
 
-*Enum*
+***Enum***
 - @EnumSource
   - 열거형 값을 테스트 메서드에 전달할 때 사용할 수 있다.
   - names 속성
