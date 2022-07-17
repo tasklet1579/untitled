@@ -32,6 +32,16 @@ footer는 선택 사항이므로 모든 커밋에 작성할 필요 없고 어떤
 
 ### ✏️ 불필요한 객체 생성을 피하라
 
+생성 비용이 큰 객체가 있다면 매번 생성하기 보다는 객체 하나를 재사용하는 것이 훨씬 빠르고 효율적이다.
+
+특히 Pattern은 입력받은 정규표현식에 해당하는 유한 상태 머신(finite state machine)을 만들기 때문에 인스턴스 생성 비용이 높다.
+
+> String.matches() 메서드는 Pattern.matches()를 이용하는데 Pattern.matches() 내부에서 Pattern 객체를 생성(compile)한 후 Matcher와 비교한 후 바로 GC 대상으로 바꿔버리기 때문이다.
+
+```
+
+```
+
 ### ✏️ 불필요한 객체 생성을 피하라
 
 https://junit.org/junit5/docs/current/user-guide/#writing-tests-classes-and-methods
