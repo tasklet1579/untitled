@@ -55,13 +55,27 @@ void charAt_throwException_givenIndexGreaterThanLength() {
 
 ### ✏️ JUnit 5 Parameterized Tests
 
-다른 값을 사용하여 하나의 테스트 코드를 반복해서 실행할 수 있다. 
+다른 값을 사용하여 하나의 테스트 코드를 반복해서 실행할 수 있다.
 
 @ParameterizedTest를 추가하는 것을 제외하고는 다른 테스트와 동일하다.
 
 Simple Values
+- 테스트 메서드에 값을 순서대로 하나씩 전달할 때 사용할 수 있다.
+- 지원하는 자료형은 다음과 같다.
+  - short, byte, int, long, float, double, char, java.lang.String, java.lang.Class
 ```
-
+public class Strings {
+    public static boolean isBlank(String input) {
+        return input == null || input.trim().isEmpty();
+    }
+}
+```
+```
+@ParameterizedTest
+@ValueSource(strings = {"", "  "})
+void isBlank_ShouldReturnTrueForNullOrBlankStrings(String input) {
+    assertTrue(Strings.isBlank(input));
+}
 ```
 
 Null and Empty Values
