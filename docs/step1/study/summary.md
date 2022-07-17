@@ -134,11 +134,29 @@ void fourMonths_AreEndingWithBer(Month month) {
 ```
 
 *CSV Literals*
+- @CsvSource
+  - 입력값과 예상 값을 전달하여 테스트가 필요할 경우 사용할 수 있다.
+  - 배열의 원소를 콤마로 나누고 각각의 값을 테스트 메서드의 파라미터로 전달한다.
+  - 콤마 이외에도 속성을 통해 다른 구분자로 커스터마이즈 할 수 있다.
+```
+@ParameterizedTest
+@CsvSource({"test,TEST", "tEst,TEST", "Java,JAVA"})
+void toUpperCase_ShouldGenerateTheExpectedUppercaseValue(String input, String expected) {
+  String actualValue = input.toUpperCase();
+  assertEquals(expected, actualValue);
+}
 ```
 
 ```
+@ParameterizedTest
+@CsvSource(value = {"test:test", "tEst:test", "Java:java"}, delimiter = ':')
+void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(String input, String expected) {
+  String actualValue = input.toLowerCase();
+  assertEquals(expected, actualValue);
+}
+```
 
-Method
+*Method*
 ```
 
 ```
