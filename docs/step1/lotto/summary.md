@@ -166,6 +166,8 @@ public class ContentService {
 }
 ```
 
+특정 날짜 이후의 게시물을 가져오는 Logic과 해당 게시물이 특정 날짜 이후의 게시물인지 체크하는 Logic을 각각의 객체에게 위임해본다.
+
 첫번째. 특정 날짜 이후의 게시물을 가져오는 Logic을 Member Object에 위임하고 해당 역할을 하는 메서드를 getContentsAfterSpecificDate로 명시한다.
 ```
 // Service Layer
@@ -243,5 +245,13 @@ public class Content {
 
 ***Service Layer & Domain Object의 역할***
 
+Service Layer
+- 다른 기능의 Service를 호출하거나 다수의 DAO를 연결하는 역할을 한다.
+- Transaction과 Cache 적용과 같은 infra 적용을 위한 단위가 된다.
+- Service는 가능한 가볍게 구현한다.(thin layer)
+- Service에 핵심 비즈니스 로직을 구현하지 말고, 로직은 상태 값을 가지고 있는 모델(또는 도메인)이 담당해야 한다.
+
+Domain Object
+- 객체는 상태값을 가지면서 행위 까지도 가진다.(State + Action)
 
 [출처](https://wckhg89.tistory.com/13)
