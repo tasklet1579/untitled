@@ -127,26 +127,28 @@ getter는 단순히 데이터를 가져오는 메서드이기 때문에 책임�
 https://tecoble.techcourse.co.kr/post/2020-04-28-ask-instead-of-getter/
 
 
-### ✏️ [객체지향적으로 개발하기](https://wckhg89.tistory.com/13)
+### ✏️ 객체지향적으로 개발하기
 
-Layered Architecture
+***Layered Architecture***
 - Presentaion Layer : 사용자 화면을 구성
 - Service Layer : 제어의 흐름을 관리
 - Data Acess Layer : 데이터베이스와의 접속을 관리
 
-Service Layer와 Domain Object의 역할에 대한 오해
+***Service Layer와 Domain Object의 역할에 대한 오해***
 - Service Layer에서 Business Logic을 개발하는 것은 절차지향적인 개발에 가깝다.
 
 ```
 // Service Layer
 @Service
 @Transactional
-public class ContentService {
-    ...
-    
+public class ContentService {    
     // 특정 회원이 작성한 게시물중 특정 시간 이후의 게시물만 가져온다.
     public List<Content> getContentsOfMemberAfterSpecificDate (Long memberId, DateTime date) {
         // 회원 조회
+        Member member = memberRepository.getMember(memberId);
+        
+        List<Content> contents = member.getContents();
+        List<Content> specificDateContents = Lists.newArrayList();
         
         // 특정 날짜 이후의 게시물만 가져오는 Business Logic
         for (Content content : contents) {
@@ -162,3 +164,83 @@ public class ContentService {
     }
 }
 ```
+
+첫번째 특정 날짜 이후의 게시물을 가져오는 Business Logic
+```
+// Service Layer
+@Service
+@Transactional
+public class ContentService {
+  @Autowired
+  private MemberRepository memberRepository;
+
+  @Autowired
+  private ContentRepository contentRepository;
+
+  ...
+
+  public List<Content> getContentsOfMemberAfterSpecificDate (Long memberId, DateTime date) {
+      Member member = memberRepository.getMember(memberId);
+
+      // 특정 날짜 이후의 게시물을 가져오는 Business Logic을 Member 객체에 위임
+      List<Content> specificDateContents = member.getContentsAfterSpecificDate(date);
+
+      return specificDateContents;
+  }
+
+  ...
+
+}
+// Member Domain Object
+@Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Member {
+    // 특정 날짜 이후의 게시물만 가져오는 Business Logic
+    public List<Content> getContentsAfterSpecificDate (DateTime date) {
+        List<Content> specificDateContents = Lists.newArrayList();
+    
+        for (Content content : contents) {
+            DateTime contentCreatedAt = content.getCreatedAt();
+            
+            if (contentCreatedAt.isAfter(date)) {
+                specificDateContents.add(content);
+            }
+        }
+    }
+}
+```
+
+두번째 특정 날짜 이후의 데이터인지 체크하는 로직
+```
+// Member Domain Object
+@Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Member {
+    public List<Content> getContentsAfterSpecificDate (DateTime date) {
+        List<Content> specificDateContents = Lists.newArrayList();
+        
+        for (Content content : this.contents) {
+            // Content 객체에게 특정날짜 이후인지 확인을 위한 메시지를 던짐
+            if (content.isAfterCreatedDate(date)) {
+                specificDateContents.add(content);
+            }
+        }
+        
+        return specificDateContents;
+    }
+}
+
+// Content Domain Object
+@Entity
+public class Content {
+    // 특정날짜 이후의 게시물인지 체크하는 Business Logic
+    public Boolean isAfterCreatedDate (DateTime date) {
+        return this.createdAt.isAfter(date);
+    }
+}
+```
+
+***Service Layer & Domain Object의 역할***
+
+
+[출처](https://wckhg89.tistory.com/13)
