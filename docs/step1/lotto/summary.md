@@ -243,4 +243,6 @@ K. Lieberherr를 비롯한 몇몇 사람들은 디미터라는 이름의 프로�
 
 ### ✏️ getter를 사용하는 대신 객체에 메시지를 보내자
 
+자바 빈 설계 규약에 따르면 자바 빈 클래스 설계 시, 클래스의 멤버변수의 접근제어자는 private이며, 모든 멤버변수에 대해 get메소드와 set메소드가 존재해야 한다. get메소드는 매개변수가 없어야 하며 set메소드는 하나 이상의 매개변수가 있어야 한다. [좋은 코드를 위한 자바 메서드 네이밍](https://tecoble.techcourse.co.kr/post/2020-04-26-Method-Naming) 에도 간단히 설명되어 있다.
+
 [출처](https://tecoble.techcourse.co.kr/post/2020-04-28-ask-instead-of-getter/)
