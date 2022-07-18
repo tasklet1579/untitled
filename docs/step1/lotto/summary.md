@@ -59,6 +59,21 @@ static block 캐시
 
 ### ✏️ 책임과 역할 분리
 
+- model
+  - Number
+  - Lottery
+  - Lotteries
+  - Money
+  - Rank
+  - Receipt
+  - Summary
+  - Ticket
+  - Winning
+- service
+  - LotteryStore
+  - LotteryProducer
+  - YieldCalculator
+
 - Number :
 - Numbers : 문자열 덧셈 계산기 핵심 도메인. 숫자의 합을 반환하는 기능을 제공한다.
 - StringUtils : 문자열 관련 기능을 제공한다.
@@ -68,6 +83,7 @@ static block 캐시
 - StringSeparator : 구분자를 기준으로 문자열에서 숫자를 분리하고 String 배열로 반환한다.
 - StringAddCalculator : 문자열에서 숫자를 분리하고 각 숫자의 합을 반환한다.
 
+### ✏️ 객체지향적으로 개발하기
 
 
 저희가 계속 불변 객체를 만드는 등의 작업을 해주는 이유는 값이 중간에 바뀌는 변수 혹은 객체들은 다루기가 어렵기 때문입니다. 전역 변수도 클래스 내에서 어디에서나 접근이 가능하기 때문에 값이 변경될 수 있고 그런 경우 해당 변수는 사용하는 입장에서는 해당 값이 자신이 원하는 값인지 확인하는 작업을 추가로 해주어야 합니다.

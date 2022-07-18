@@ -111,15 +111,17 @@ class A {
 
 ### ✏️ equals, hashCode, toString
 
-모든 클래스는 최상위 클래스인 java.lang.Object 클래스를 상속 받는다. 또한, Object의 java.lang 패키지는 컴파일러에 의해 자동으로 import되고 어디에서든 사용될 수 있다.
+모든 클래스는 최상위 클래스인 java.lang.Object 클래스를 상속 받는다. 또한, Object의 java.lang 패키지는 컴파일러에 의해 자동으로 import되기 때문에 어디에서든 사용될 수 있다.
 
 모든 클래스는 Object의 자식이거나 자손인 클래스로 정의할 수 있기 때문에 Object 클래스에 있는 대표적인 메서드를 아는 것이 중요하다.
 
-equals : 
+***equals*** : 
 
-hashCode : 
+***hashCode*** : 
 
-toString : 
+***toString*** : 객체의 문자 정보를 반환한다.
+
+객체의 문자 정보란 객체를 문자열로 표현한 값을 말하는데 클래스명 + '@' + 16진수 형태의 해시코드 문자열로 구성되어 있다.
 
 ### ✏️ 다양한 생성자 활용
 
