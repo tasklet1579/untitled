@@ -68,3 +68,43 @@ static block 캐시
 
 
 인스턴스를 생성할 때 방어적 복사를 통해서 외부와 내부의 관계를 끊어주고 get과 같은 값을 반환하는 메서드를 호출할 때는 Collections.unmodifiableList 처리하면 될까요?
+
+### ✏️ 디미터 법칙
+
+K. Lieberherr를 비롯한 몇몇 사람들은 디미터라는 이름의 프로젝트를 진행하던 도중 다른 객체들과의 협력을 통해 프로그램을 완성해나가는 객체지향 프로그래밍에서 객체들의 협력 경로를 제한하면 결합도를 효과적으로 낮출 수 있다는 사실을 발견했고 디미터 법칙을 만들었다.
+
+현재 디미터 법칙은 객체 간 관계를 설정할 때 객체 간의 결합도를 효과적으로 낮출 수 있는 유용한 지침 중 하나로 꼽히며 객체 지향 생활 체조 원칙 중 한 줄에 점을 하나만 찍는다.로 요약되기도 한다.
+
+https://tecoble.techcourse.co.kr/post/2020-06-02-law-of-demeter/
+
+정적 팩토리 메서드 잘 적용해주셨습니다 👍
+다만 정적 팩토리 메서드는 파라미터가 한개일 땐 from을 관습적으로 사용합니다!
+
+from : 매개변수를 하나 받아서 해당 타입의 인스턴스를 반환하는 형변환 메서드
+ex) Date d = Date.from(instant)
+of : 여러 매개변수를 받아 적합한 타입의 인스턴스를 반환하는 집계 메서드
+ex) Set<Rank> faceCards = EnumSet.of(JACK, QUEEN, KING);
+valueOf : from 과 of 의 더 자세한 버전
+ex) BigInteger prime = BigInteger.valueOf(Integer.MAX_VALUE);
+- 클린 코드
+
+
+getter는 단순히 데이터를 가져오는 메서드이기 때문에 책임이 데이터를 처리하기 좋은 클래스에서 이탈하는 경우가 있는 것 같습니다. getter 관련해서 좋은 내용이 있어 첨부드립니다 : )
+
+https://tecoble.techcourse.co.kr/post/2020-04-28-ask-instead-of-getter/
+
+
+
+객체지향적으로 개발하기
+
+우선 service layer를 만들어주신 이유 설명 주셔서 감사합니다 ㅎㅎ
+첨부해주신 글에서도 언급하듯 service layer에는
+
+다른 기능의 Service를 호출하거나 다수의 DAO를 연결하는 역할을 한다.
+Transaction과 Cache 적용과 같은 infra 적용을 위한 단위가 된다.
+Service는 가능한 가볍게 구현한다.(thin layer)
+Service에 핵심 비즈니스 로직을 구현하지 말고, 로직은 상태 값을 가지고 있는 모델(또는 도메인)이 담당해야 한다.
+로 정리해주셨네요. 이제 저희 서비스를 봤을 때 DB 등 infra에 접근하는 곳이 없어서 저는 service layer는 따로 없어도 될 것 같고, 데이터를 처리하는 순서를 담당하는 controller와 데이터를 보여주는 view, 마지막으로 로직을 처리하는 model만 존재하면 될 것 같습니다! 성우님께서는 어떻게 생각하시는지 궁금합니다 : )
+
+둘째로 LotteryProducer 외에도 상태를 갖지 않는 클래스들(예를 들어 LotteryStore)은 인스턴스화로 얻는 이득이 없으므로, private 생성자로 인스턴스화를 막는 것이 좋아보입니다!
+

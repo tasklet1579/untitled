@@ -88,19 +88,18 @@
 ### 🔑️️️ 책임과 역할 분리
 
 - model
-  - Number
-  - Lottery
-  - Lotteries
-  - Money
-  - Rank
-  - Receipt
-  - Summary
-  - Ticket
-  - Winning
+  - Money : 금액을 저장하고 반환하는 모델.
+  - Ticket : 로또 티켓을 생성하고 반환하는 모델.
+  - Receipt : 수동, 자동 구매 로또를 저장하고 반환하는 모델.
+  - Number : 로또 번호를 관리하고 로또를 구성하는 핵심 모델.
+  - Lottery, Lotteries : 로또 번호만 포함하는 일급 컬렉션.
+  - Rank : 
+  - Winning : 
+  - Summary : 
 - service
-  - LotteryStore
-  - LotteryProducer
-  - YieldCalculator
+  - LotteryStore : 로또 티켓 개수만큼 로또로 교환하는 서비스.
+  - LotteryProducer : 1부터 45사이의 숫자 중 6개의 숫자를 무작위로 선택하는 서비스.
+  - YieldCalculator : 구입금액 대비 수익률을 계산하는 서비스.
 
 - Number :
 - Numbers : 문자열 덧셈 계산기 핵심 도메인. 숫자의 합을 반환하는 기능을 제공한다.
