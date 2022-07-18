@@ -98,7 +98,7 @@ public class Lottery {
 
 Q. [방어적 복사와 Unmodifiable의 차이점은?](https://steady-coding.tistory.com/559#%EB%B0%A9%EC%96%B4%EC%A0%81_%EB%B3%B5%EC%82%AC%EC%99%80_Unmodifiable%EC%9D%98_%EC%B0%A8%EC%9D%B4%EC%A0%90%EC%9D%80?)
 
-방어적 복사는 A 리스트와 B 리스트 사이의 참조를 끊는 행위이지만, Unmodifiable은 참조를 끊지 않고 단순히 특정 리스트에서 요소의 변경이 일어날 경우 예외를 던진다. 그래서 생성자 단계에서 방어적 복사를 취하지 않고, getter에서 Unmodifiable만 취할 경우 초기 생성자로 주입한 컬렉션의 변화가 생기면 불변성이 깨진다.
+> 방어적 복사는 A 리스트와 B 리스트 사이의 참조를 끊는 행위이지만, Unmodifiable은 참조를 끊지 않고 단순히 특정 리스트에서 요소의 변경이 일어날 경우 예외를 던진다. 그래서 생성자 단계에서 방어적 복사를 취하지 않고, getter에서 Unmodifiable만 취할 경우 초기 생성자로 주입한 컬렉션의 변화가 생기면 불변성이 깨진다.
 
 Q. [방어적 복사를 사용하면 항상 불변성을 보장하는가?](https://steady-coding.tistory.com/559#%EB%B0%A9%EC%96%B4%EC%A0%81_%EB%B3%B5%EC%82%AC%EB%A5%BC_%EC%82%AC%EC%9A%A9%ED%95%98%EB%A9%B4_%ED%95%AD%EC%83%81_%EB%B6%88%EB%B3%80%EC%84%B1%EC%9D%84_%EB%B3%B4%EC%9E%A5%ED%95%98%EB%8A%94%EA%B0%80?)
 
