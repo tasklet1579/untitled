@@ -92,7 +92,7 @@ public class Lottery {
 - 입력 값에 따라 매번 다른 클래스의 객체를 반환할 수 있다.
 
 정적 팩토리 메서드 네이밍 규칙
-- valudeOf(), of() : 인자로 전달되는 값에 해당하는 인스턴스를 반환
+- valudeOf(), of(), from() : 인자로 전달되는 값에 해당하는 인스턴스를 반환
 - getInstance(), newInstance() : 보통 자신과 같은 Type의 인스턴스를 반환
 - getType(), newType() : 자신과 다른 Type의 인스턴스를 반환
 
@@ -122,33 +122,43 @@ K. Lieberherr를 비롯한 몇몇 사람들은 디미터라는 이름의 프로�
 
 https://tecoble.techcourse.co.kr/post/2020-06-02-law-of-demeter/
 
-정적 팩토리 메서드 잘 적용해주셨습니다 👍
-다만 정적 팩토리 메서드는 파라미터가 한개일 땐 from을 관습적으로 사용합니다!
-
-from : 매개변수를 하나 받아서 해당 타입의 인스턴스를 반환하는 형변환 메서드
-ex) Date d = Date.from(instant)
-of : 여러 매개변수를 받아 적합한 타입의 인스턴스를 반환하는 집계 메서드
-ex) Set<Rank> faceCards = EnumSet.of(JACK, QUEEN, KING);
-valueOf : from 과 of 의 더 자세한 버전
-ex) BigInteger prime = BigInteger.valueOf(Integer.MAX_VALUE);
-- 클린 코드
-
-
 getter는 단순히 데이터를 가져오는 메서드이기 때문에 책임이 데이터를 처리하기 좋은 클래스에서 이탈하는 경우가 있는 것 같습니다. getter 관련해서 좋은 내용이 있어 첨부드립니다 : )
 
 https://tecoble.techcourse.co.kr/post/2020-04-28-ask-instead-of-getter/
 
 
-### ✏️ 객체지향적으로 개발하기
+### ✏️ [객체지향적으로 개발하기](https://wckhg89.tistory.com/13)
 
-우선 service layer를 만들어주신 이유 설명 주셔서 감사합니다 ㅎㅎ
-첨부해주신 글에서도 언급하듯 service layer에는
+Layered Architecture
+- Presentaion Layer : 사용자 화면을 구성
+- Service Layer : 제어의 흐름을 관리
+- Data Acess Layer : 데이터베이스와의 접속을 관리
 
-다른 기능의 Service를 호출하거나 다수의 DAO를 연결하는 역할을 한다.
-Transaction과 Cache 적용과 같은 infra 적용을 위한 단위가 된다.
-Service는 가능한 가볍게 구현한다.(thin layer)
-Service에 핵심 비즈니스 로직을 구현하지 말고, 로직은 상태 값을 가지고 있는 모델(또는 도메인)이 담당해야 한다.
-로 정리해주셨네요. 이제 저희 서비스를 봤을 때 DB 등 infra에 접근하는 곳이 없어서 저는 service layer는 따로 없어도 될 것 같고, 데이터를 처리하는 순서를 담당하는 controller와 데이터를 보여주는 view, 마지막으로 로직을 처리하는 model만 존재하면 될 것 같습니다! 성우님께서는 어떻게 생각하시는지 궁금합니다 : )
+Service Layer와 Domain Object의 역할에 대한 오해
+- Service Layer에서 Business Logic을 개발하는 것은 절차지향적인 개발에 가깝다.
 
-둘째로 LotteryProducer 외에도 상태를 갖지 않는 클래스들(예를 들어 LotteryStore)은 인스턴스화로 얻는 이득이 없으므로, private 생성자로 인스턴스화를 막는 것이 좋아보입니다!
+```
+// Service Layer
+@Service
+@Transactional
+public class ContentService {
+    ...
+    
+    // 특정 회원이 작성한 게시물중 특정 시간 이후의 게시물만 가져온다.
+    public List<Content> getContentsOfMemberAfterSpecificDate (Long memberId, DateTime date) {
+        // 회원 조회
+        
+        // 특정 날짜 이후의 게시물만 가져오는 Business Logic
+        for (Content content : contents) {
+            // 특정 날짜 이후인지 체크하는 Business Logic
+            DateTime contentCreatedAt = content.getCreatedAt();
+            
+            if (contentCreatedAt.isAfter(date)) {
+                specificDateContents.add(content);
+            }
+        }
 
+      return specificDateContents;
+    }
+}
+```
