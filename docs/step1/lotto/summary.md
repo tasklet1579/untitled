@@ -136,6 +136,7 @@ https://tecoble.techcourse.co.kr/post/2020-04-28-ask-instead-of-getter/
 
 ***Service Layer와 Domain Object의 역할에 대한 오해***
 - Service Layer에서 Business Logic을 개발하는 것은 절차지향적인 개발에 가깝다.
+- Domain Object에서는 단순한 get, set등의 역할만 하고 있다.
 
 ```
 // Service Layer
@@ -165,7 +166,7 @@ public class ContentService {
 }
 ```
 
-첫번째 특정 날짜 이후의 게시물을 가져오는 Business Logic
+첫번째. 특정 날짜 이후의 게시물을 가져오는 Logic을 Member Object에 위임하고 해당 역할을 하는 메서드를 getContentsAfterSpecificDate로 명시한다.
 ```
 // Service Layer
 @Service
@@ -210,7 +211,7 @@ public class Member {
 }
 ```
 
-두번째 특정 날짜 이후의 데이터인지 체크하는 로직
+두번째. 특정 날짜 이후의 데이터인지 체크하는 Logic을 Content에 위임하고 Member는 Content에 이 게시물이 특정 날짜 이후의 게시물인지 메시지를 보낸다.
 ```
 // Member Domain Object
 @Entity
