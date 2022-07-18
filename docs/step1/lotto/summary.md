@@ -48,8 +48,33 @@ Console에서 Scanner는 정적으로 선언하였고 getDeclaredField로 source
 
 ### ✏️ 일급 컬렉션
 
-https://jojoldu.tistory.com/412
+Collection을 Wrapping하면서, Wrapping한 Collection 외 다른 멤버 변수가 없는 상태를 일급 컬렉션이라고 한다.
 
+```
+public class Lottery {
+    private final List<Number> numbers;
+    
+    public Lottery(List<Number> numbers) {
+        validate(numbers);
+        this.numbers = new LinkedList<>(numbers);
+    }
+    
+    private void validate(List<Number> numbers) {
+        ...
+    }
+    
+    public List<Number> getNumbers() {
+        return Collections.unmodifiableList(numbers);
+    }
+    
+    ...
+}
+```
+
+일급 컬렉션의 장점
+- ㅇㅇ
+- ㅇㅇ
+- ㅇㅇ
 
 
 static block 캐시
