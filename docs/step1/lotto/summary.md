@@ -67,15 +67,18 @@ public class Lottery {
         return Collections.unmodifiableList(numbers);
     }
     
+    public boolean contains(Number number) {
+        return numbers.contains(number);
+    }
+    
     ...
 }
 ```
 
 일급 컬렉션의 장점
-- ㅇㅇ
-- ㅇㅇ
-- ㅇㅇ
-
+- validation을 통해 객체의 상태를 보장할 수 있다.
+- 로직을 한 곳에서 관리하기 때문에 유지보수에 유리하고 중복 코드를 줄일 수 있다.
+- 필요에 따라서 객체의 불변성을 보장할 수 있다.
 
 static block 캐시
 
