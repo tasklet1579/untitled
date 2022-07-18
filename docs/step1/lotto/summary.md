@@ -133,8 +133,7 @@ getter는 단순히 데이터를 가져오는 메서드이기 때문에 책임�
 https://tecoble.techcourse.co.kr/post/2020-04-28-ask-instead-of-getter/
 
 
-
-객체지향적으로 개발하기
+### ✏️ 객체지향적으로 개발하기
 
 우선 service layer를 만들어주신 이유 설명 주셔서 감사합니다 ㅎㅎ
 첨부해주신 글에서도 언급하듯 service layer에는
