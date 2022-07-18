@@ -38,15 +38,7 @@ getMethod를 사용하면 같은 이름의 메서드라도 파라미터의 설�
 
 Console에서 Scanner는 정적으로 선언하였고 getDeclaredField로 sourceClosed 변수에 접근을 가능하게 하였는데 이렇게 프로그램 실행 도중 클래스의 멤버 변수에 접근해서 값을 확인하면 실제로 Scanner가 close 되었는지 알 수 있다.
 
-### ✏️ 불변 객체
-
-방어적 복사3
-
-복사를 할 때 Arrays.asList를 사용하게 되면 Arrays의 이너 클래스인 ArrayList를 반환하게 되네요
-해당 클래스는 AbstractList를 상속하고 있고 add와 같은 메서드를 호출하면 UnsupportedOperationException 에러가 발생합니다
-불변 처리한 객체에 add와 같은 메서드를 만들지는 않겠지만.. 그런 경우가 발생할 수도 있을까요?
-
-### ✏️ 일급 컬렉션
+### ✏️ 일급 컬렉션과 불변 객체
 
 Collection을 Wrapping하면서, Wrapping한 Collection 외 다른 멤버 변수가 없는 상태를 일급 컬렉션이라고 한다.
 
@@ -81,7 +73,10 @@ public class Lottery {
 - 로직을 한 곳에서 관리하기 때문에 유지보수에 유리하고 중복 코드를 줄일 수 있다.
 - 필요에 따라서 객체의 불변성을 보장할 수 있고 목적에 맞는 값만 반환하는 것도 하나의 방법이 될 수 있다.
 
-static block 캐시
+불변 객체
+
+
+### static block 캐시
 
 
 ### ✏️ ENUM
