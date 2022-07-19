@@ -40,7 +40,7 @@
 
 ✔️ 3주차 : 인수 테스트 주도 개발 : [미션 설명](docs/step3/readme.md), [내용 정리](docs/step3/summary.md), 소스 코드
 
-✔️ 4주차 : 그럴듯한 서비스 만들기 : [미션 설명](docs/step4/readme.md), [배포 스크립트](docs/step4/deploy.sh)
+✔️ 4주차 : 그럴듯한 서비스 만들기 : [미션 설명](docs/step4/readme.md), [망 구성 결과](docs/step4/network.md), [배포 스크립트](docs/step4/deploy.sh)
 
 ✔️ 5주차 : 인수 테스트 기반 TDD
 
