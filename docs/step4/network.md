@@ -19,8 +19,8 @@ security group : 인바운드/아웃바운드 트래픽을 제어하는 가상�
   - bastion으로부터 22번 포트 접속 허용
 - bastion : 공인 IP 1개만 22번 포트 접속 허용
 
-ec2 : 
-- tasklet1579-ec2-web : 웹 서비스
+ec2 : 클라우드에서 확장 가능 컴퓨팅 용량
+- tasklet1579-ec2-web : 웹 서비스 운영
 - tasklet1579-ec2-nat : 소프트웨어 업데이트 또는 운영 체제 패치
-- tasklet1579-ec2-mysql : 데이터베이스
+- tasklet1579-ec2-mysql : 데이터베이스 설치
 - tasklet1579-ec2-bastion : 인스턴스 접근제어
