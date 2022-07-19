@@ -51,33 +51,6 @@
 - 외부망에 [웹 애플리케이션](https://github.com/next-step/infra-subway-deploy) 을 배포
 - DNS 설정
 
----
-
-### EC2 생성하기
-- [aws web console](https://awsx100.signin.aws.amazon.com/console) 에 사용자 이름 / 비밀번호 등을 입력하여 접속합니다.
-    - 아이디 : github id
-    - 초기 비밀번호 :
-- EC2 메뉴로 접근하세요.
-    - Ubuntu 64 bit 선택 (Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-00edfb46b107f643c)
-    - InstanceType : t3.medium 생성 가능
-    - 서브넷 : 적절한 서브넷 선택, 퍼블릭 IP 자동할당 : 활성화
-    - 스토리지 : 서비스 운영할 것을 고려해서 설정해주세요.
-    - 서버를 생성할 때는 다른 사람의 서버와 구분하기 위해 반드시 Name 이름으로 태그에 자신의 계정명을 작성합니다.
-    - 보안그룹 : 적절한 보안그룹을 선택
-    - 키 페어 생성
-        - 키 페어 이름에 자신의 계정을 prefix로 붙입니다.
-        - 서버 생성시 발급받은 key를 분실할 경우 서버에 접속할 수 없어요.
-            - key를 분실하지 않도록 주의하세요, key는 최초 1회 생성한 후 재사용합니다.
-- 서버에 접속하기
-    - 서버 IP는 aws web console에서 확인 가능
-    - 맥 운영체제 사용자
-        - 터미널 접속한 후 앞 단계에서 생성한 key가 위치한 곳으로 이동한다.
-        - chmod 400 [pem파일명]
-        - ssh -i [pem파일명] ubuntu@[SERVER_IP]
-    - 윈도우즈 운영체제 사용자
-        - [PuTTY를 사용하여 Windows에서 Linux 인스턴스에 연결](https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/putty.html)
-        - [putty를 위한 ppk 생성](https://klero.tistory.com/entry/AWS-EC2-%EC%82%AC%EC%9A%A9-pem%ED%82%A4-ppk%EB%A1%9C-%EB%B3%80%ED%99%98%ED%95%98%EC%97%AC-Putty-SSH-%EC%A0%91%EC%86%8D%EB%B0%A9%EB%B2%95)
-
 --- 
 
 ### 접근통제
