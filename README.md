@@ -34,7 +34,7 @@
 
 ✔️ 1주차 : TDD 기반 로또 구현 : [미션 설명](docs/step1/lotto/readme.md), [내용 정리](docs/step1/lotto/summary.md), 소스 코드
 
-✔️ 2주차 : JPA : [실습1](docs/step2/subway/handson1.md), [실습2](docs/step2/subway/handson2.md)
+✔️ 2주차 : JPA : [실습1](docs/step2/subway/handson1.md), [실습2](docs/step2/subway/handson2.md), [내용 정리](docs/step2/subway/summary.md)
 
 ✔️ 2주차 : 질문 삭제하기 리팩토링 : [미션 설명](docs/step2/qna/readme.md), [내용 정리](docs/step2/qna/summary.md), 소스 코드
 
