@@ -2,7 +2,7 @@
 
 애플리케이션의 엔티티의 생성 시간과 마지막 수정 시간을 관리할 필요가 있다면 수동으로 매번 추가하는 대신 Auditing 기능을 이용하여 자동으로 추가해 줄 수 있다.
 
-1. @Configuration 클래스에 @EnableJpaAuditing을 추가한다.
+@Configuration 클래스에 @EnableJpaAuditing을 추가한다.
 ```
 @EnableJpaAuditing
 @SpringBootApplication
@@ -13,14 +13,14 @@ public class Application {
 }
 ```
 
-2. 엔티티에 콜백 리스너를 추가한다.
+엔티티에 콜백 리스너를 추가한다.
 ```
 @EntityListeners(AuditingEntityListener.class)
 @Entity
 public class Line {
 ```
 
-3. 생성 날짜와 마지막 수정 날짜 프로퍼티에 @CreatedDate와 @LastModifiedDate를 추가한다.
+생성 날짜와 마지막 수정 날짜 프로퍼티에 @CreatedDate와 @LastModifiedDate를 추가한다.
 ```
 @EntityListeners(AuditingEntityListener.class)
 @Entity
@@ -34,8 +34,6 @@ public class Line {
     ...
 }
 ```
-
-@MappedSuperclass
 
 여전히 아래와 같은 코드 중복이 발생한다. @MappedSuperclass를 사용하여 중복 코드를 분리할 수 있다.
 
