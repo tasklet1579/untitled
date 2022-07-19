@@ -9,8 +9,8 @@
 ✔️ internet gateway : vpc 리소스와 인터넷 간 통신을 활성화하는 게이트웨이
 
 ✔️ route table : 네트워크 트래픽이 전달되는 위치 제어
-- public : public 1, 2, admin 1 subnet 연결
-- private : private 1 subnet 연결
+- 외부 : 외부망 1과 2, 관리망 1을 연결
+- 내부 : 내부망 1을 연결
 
 ✔️ security group : 인바운드/아웃바운드 트래픽을 제어하는 가상의 논리적 방화벽
 - public
