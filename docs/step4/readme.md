@@ -18,7 +18,7 @@
 - [저장소](https://github.com/next-step/infra-subway-deploy) 를 활용하여 아래 요구사항을 해결합니다.
 - README 에 있는 질문에 답을 추가한 후 PR을 보내고 리뷰요청을 합니다.
 
-망 구성
+📌 망 구성
 - VPC 생성
     - CIDR은 C class(x.x.x.x/24)로 생성. 이 때, 다른 사람과 겹치지 않게 생성
 - Subnet 생성
@@ -43,11 +43,7 @@
     - 베스쳔 서버에 Session Timeout 600s 설정
     - 베스쳔 서버에 Command 감사로그 설정
 
-*주의사항
-- 다른 사람이 생성한 리소스는 손대지 말아요 🙏🏻
-- 모든 리소스는 태그를 작성합니다. 이 때 자신의 계정을 Prefix로 붙입니다. (예: brainbackdoor-public)
-
-웹 애플리케이션 배포
+📌 웹 애플리케이션 배포
 - 외부망에 [웹 애플리케이션](https://github.com/next-step/infra-subway-deploy) 을 배포
 - DNS 설정
 
