@@ -57,6 +57,14 @@ public class StationAcceptanceTest {
 }
 ```
 
+🆚 MockMvc vs WebTestClient vs RestAssured
+- MockMvc
+  - @SpringBootTest의 webEnvironment.MOCK과 함께 사용 가능하며 mocking 된 web environment(ex tomcat) 환경에서 테스트
+- WebTestClient
+  - @SpringBootTest의 webEnvironment.RANDOM_PORT나 DEFINED_PORT와 함께 사용, Netty를 기본으로 사용
+- RestAssured
+  - 실제 web environment(Apache Tomcat)을 사용하여 테스트
+
 ### ✏️ 커밋 메시지
 
 ### ✏️ 커밋 메시지
