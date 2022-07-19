@@ -196,6 +196,10 @@ public class SimpleJpaRepository<T, ID> implements JpaRepositoryImplementation<T
 
 [출처](https://mangkyu.tistory.com/164)
 
-### ✏️ Map보다 DTO 클래스를 사용해야 하는 이유
+### ✏️ Jackson ObjectMapper
 
-StationRequest을 사용하면 추가로 생성자나 set 메서드를 작성해야는데 그렇지 않아도 objectmapper가 알아서 readValue해주기 때문에 어떤 의도로 물어보신지 궁금해요
+[jackson 라이브러리는 어떻게 동작하는가?](https://beaniejoy.tistory.com/75)
+
+[ObjectMapper는 Property를 어떻게 찾을까?](https://bactoria.github.io/2019/08/16/ObjectMapper%EB%8A%94-Property%EB%A5%BC-%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%B0%BE%EC%9D%84%EA%B9%8C/)
+
+[@Request Body에서는 Setter가 필요없다?](https://jojoldu.tistory.com/407)
