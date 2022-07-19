@@ -76,6 +76,8 @@ DatabaseCleanup
 - EntityManager를 활용하여 테이블 이름 조회 후 각 테이블 Truncate 수행
 - ID auto increment 숫자를 1로 복구 시킴
 
+[인수테스트에서 테스트 격리하기](https://tecoble.techcourse.co.kr/post/2020-09-15-test-isolation/)
+
 ### ✏️ 커밋 메시지
 
 ### ✏️ 커밋 메시지
