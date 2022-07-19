@@ -205,9 +205,9 @@ void identity() {
     assertThat(station1 == station2).isTrue();
 }
 ```
-![image](./image/image01.png)
-![image](./image/image02.png)
-![image](./image/image03.png)
+![image](../../image/step2/image01.png)
+![image](../../image/step2/image02.png)
+![image](../../image/step2/image03.png)
 
 ### 실습
 - 엔티티를 영속성 컨텍스트에 등록 해 보자.
@@ -278,14 +278,14 @@ public class JpaPersistableEntityInformation<T extends Persistable<ID>, ID>
 - 준영속(detached): 영속성 컨텍스트에 저장되었다가 분리된 상태
 - 삭제(removed): 삭제된 상태
 
-![image](./image/image04.png)
+![image](../../image/step2/image04.png)
 
 @Transactional
 - 트랜잭션을 커밋하는 순간 영속성 컨텍스트를 데이터베이스에 반영
 
-![image](./image/image05.png)
-![image](./image/image06.png)
-![image](./image/image07.png)
+![image](../../image/step2/image05.png)
+![image](../../image/step2/image06.png)
+![image](../../image/step2/image07.png)
 
 ### 실습
 - 변경 감지 맛보기
@@ -299,4 +299,4 @@ void update() {
 }
 ```
 
-![image](./image/image08.png)
+![image](../../image/step2/image08.png)
