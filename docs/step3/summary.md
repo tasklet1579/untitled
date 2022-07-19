@@ -8,10 +8,20 @@ TDD는 작은 단위의 요구 사항을 테스트하지만 ATDD는 시나리오
 
 ***🧰 인수 테스트 도구***
 
-🔨 Spring Boot Test
+Spring Boot Test
 - 테스트에 사용할 ApplicationContext를 쉽게 지정하게 도와줌
 - 기존 @ContextConfiguration의 발전된 기능
 - SpringApplication에서 사용하는 ApplicationContext를 생성해서 작동
+- [Testing Spring Boot Applications](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications)
+
+```
+@DisplayName("지하철역 관련 기능")
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+public class StationAcceptanceTest {
+    ...
+}
+```
+
 
 ### ✏️ 커밋 메시지
 
