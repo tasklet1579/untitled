@@ -97,6 +97,16 @@ package org.springframework.orm.jpa.vendor;
 public class HibernateJpaDialect extends DefaultJpaDialect {
     ...
     
+    @Override
+	public Object beginTransaction(EntityManager entityManager, TransactionDefinition definition)
+	    ...
+	    
+	    // Adapt flush mode and store previous isolation level, if any.
+	    FlushMode previousFlushMode = prepareFlushMode(session, definition.isReadOnly());
+	    
+	    ...
+	}
+    
     @Nullable
     protected FlushMode prepareFlushMode(Session session, boolean readOnly) throws PersistenceException {
         FlushMode flushMode = session.getHibernateFlushMode();
@@ -111,6 +121,31 @@ public class HibernateJpaDialect extends DefaultJpaDialect {
     }
 }
 ```
+
+```
+package org.hibernate.internal;
+
+public class SessionImpl
+        extends AbstractSessionImpl
+        implements EventSource, SessionImplementor, HibernateEntityManagerImplementor {
+		
+    @Override
+    public void flushBeforeTransactionCompletion() {
+        final boolean doFlush = isTransactionFlushable() 
+            && getHibernateFlushMode() != FlushMode.MANUAL;
+        
+        try {
+            if ( doFlush ) {
+              managedFlush();
+            }
+        }
+        catch (RuntimeException re) {
+            throw ExceptionMapperStandardImpl.INSTANCE.mapManagedFlushFailure( "error during managed flush", re, this );
+        }
+    }
+```
+
+위에서 readOnly이면 Hibernate Session의 Flush 모드를 MANUAL로 강제했고 doFlush는 false라서 managedFlush 메서드는 호출되지 않는다.
 
 ### ✏️ @Embedded And @Embeddable
 
