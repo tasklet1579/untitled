@@ -14,14 +14,41 @@ Spring Boot Test
 - SpringApplication에서 사용하는 ApplicationContext를 생성해서 작동
 - [Testing Spring Boot Applications](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications)
 
+- RestAssured
+- REST-assured는 REST API의 테스트 및 검증을 단순화하도록 설계
+- HTTP 작업에 대한 검증을 위한 풍부한 API를 활용 가능
+
 ```
 @DisplayName("지하철역 관련 기능")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class StationAcceptanceTest {
-    ...
+    @LocalServerPort
+    int port;
+    
+    @BeforeEach
+    public void beforeEach() {
+        if (RestAssured.port == RestAssured.UNDEFINED_PORT) {
+            RestAssured.port = port;
+        }
+    }
+    
+    @Test
+    void createStation() {
+        ...
+                
+        createStation(request);
+    }
+    
+    ExtractableResponse<Response> createStation(StationRequest request) {
+        return RestAssured.given().log().all()
+                          .body(request)
+                          .contentType(MediaType.APPLICATION_JSON_VALUE)
+                          .when().post("/stations")
+                          .then().log().all()
+                          .extract();
+    }
 }
 ```
-
 
 ### ✏️ 커밋 메시지
 
