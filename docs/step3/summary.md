@@ -103,8 +103,8 @@ public class HibernateJpaDialect extends DefaultJpaDialect {
         if (readOnly) {
             // We should suppress flushing for a read-only transaction.
             if (!flushMode.equals(FlushMode.MANUAL)) {
-            session.setHibernateFlushMode(FlushMode.MANUAL);
-            return flushMode;
+                session.setHibernateFlushMode(FlushMode.MANUAL);
+                return flushMode;
             }
         }
         ...
