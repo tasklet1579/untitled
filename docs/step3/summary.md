@@ -14,7 +14,14 @@ Spring Boot Test
 - SpringApplication에서 사용하는 ApplicationContext를 생성해서 작동
 - [Testing Spring Boot Applications](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications)
 
-- RestAssured
+WebEnvironment
+- @SpringBootTest의 webEnvironment 속성을 사용하여 테스트 서버의 실행 방법을 설정
+  - MOCK: Mocking된 웹 환경을 제공, MockMvc를 사용한 테스트를 진행할 수 있음
+  - RANDOM_PORT: 실제 웹 환경을 구성
+  - DEFINED_PORT: 실제 웹 환경을 구성, 지정한 포트를 listen
+  - NONE: 아무런 웹 환경을 구성하지 않음
+
+RestAssured
 - REST-assured는 REST API의 테스트 및 검증을 단순화하도록 설계
 - HTTP 작업에 대한 검증을 위한 풍부한 API를 활용 가능
 
