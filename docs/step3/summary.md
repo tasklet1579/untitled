@@ -78,10 +78,34 @@ DatabaseCleanup
 
 [인수테스트에서 테스트 격리하기](https://tecoble.techcourse.co.kr/post/2020-09-15-test-isolation/)
 
-### ✏️ 커밋 메시지
+### ✏️ @Transactional(readOnly = true)
 
-### ✏️ 커밋 메시지
+***DBMS 별 Transaction Read Only에 대한 동작 방식***
 
-### ✏️ 커밋 메시지
+먼저 readOnly는 DB의 옵션이 아닌, 힌트입니다.
+힌트라는 것은 해당 벤더사의 드라이버를 구현하는 측에서 활용을 할 수도 있고, 활용하지 않을 수 있다는건데요.
+위와 같은 이유로 DB 벤더사 마다 다르게 동작합니다 ㅎㅎ
+말씀하신 것과 같이 readOnly 옵션을 보고 캐시 영역에서의 변경 감지나 플러시는 작동하지 않게 구현한 벤더사도 있고, SELECT 쿼리에 대해 Read DB를 통해서만 조회하도록 구현한 벤더사도 있습니다~
 
-### ✏️ 커밋 메시지
+
+### ✏️ @Embedded And @Embeddable
+
+
+
+[출처](https://www.baeldung.com/jpa-embedded-embeddable)
+
+### ✏️ Raw 타입은 사용하지 말자
+
+
+
+[출처](https://mangkyu.tistory.com/137)
+
+### ✏️ Map보다 DTO 클래스를 사용해야 하는 이유
+
+
+
+[출처](https://mangkyu.tistory.com/164)
+
+### ✏️ Map보다 DTO 클래스를 사용해야 하는 이유
+
+StationRequest을 사용하면 추가로 생성자나 set 메서드를 작성해야는데 그렇지 않아도 objectmapper가 알아서 readValue해주기 때문에 어떤 의도로 물어보신지 궁금해요
