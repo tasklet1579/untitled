@@ -6,9 +6,9 @@ TDD는 작은 단위의 요구 사항을 테스트하지만 ATDD는 시나리오
 
 인수 테스트는 블랙 박스 테스트의 성격을 가지고 있기 때문에 클라이언트는 결과물의 내부 구현이나 사용된 기술을 기반으로 검증하기 보다는 표면적으로 확인할 수 있는 요소를 바탕으로 검증하려고 한다.
 
-***인수 테스트 도구***
+***🧰 인수 테스트 도구***
 
-Spring Boot Test
+🔨 Spring Boot Test
 - 테스트에 사용할 ApplicationContext를 쉽게 지정하게 도와줌
 - 기존 @ContextConfiguration의 발전된 기능
 - SpringApplication에서 사용하는 ApplicationContext를 생성해서 작동
