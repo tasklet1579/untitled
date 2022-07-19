@@ -87,6 +87,8 @@ This just serves as a hint for the actual transaction subsystem; it will not nec
 A transaction manager which cannot interpret the read-only hint will not throw an exception when asked for a read-only transaction but rather silently ignore the hint. 
 ```
 
+> readOnly는 현재 해당 그 트랜잭션 내에서 데이터를 읽기만 할건지 설정하는 겁니다. 이걸 설정하면 DB 중에 read 락(lock)과 write 락을 따로 쓰는 경우 해당 트랜잭션에서 의도치 않게 데이터를 변경하는 일을 막아줄 뿐 아니라, 하이버네이트를 사용하는 경우에는 FlushMode를 Manual로 변경하여 dirty checking을 생략하게 해준다거나 DB에 따라 DataSource의 Connection 레벨에도 설정되어 약간의 최적화가 가능합니다. 아마 이 부분에서 특정 DB는 말씀하신대로 isolation 레벨이 READ_UNCOMMITED 처럼 동작할 여지도 있는 것 같습니다. 그런데 그게 꼭 좋은 건지는 생각해 봐야겠네요. READ_UNCOMMITED 면 팬텀 Read가 가능하단 거니까 isolation level을 명시적으로 선언해야 할지도 모르겠네요.
+
 ***DBMS 별 Transaction Read Only에 대한 동작 방식***
 
 먼저 readOnly는 DB의 옵션이 아닌, 힌트입니다.
