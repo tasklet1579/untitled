@@ -180,19 +180,13 @@ public class SimpleJpaRepository<T, ID> implements JpaRepositoryImplementation<T
 
 ### ✏️ @Embedded And @Embeddable
 
-
-
 [출처](https://www.baeldung.com/jpa-embedded-embeddable)
 
 ### ✏️ Raw 타입은 사용하지 말자
 
-
-
 [출처](https://mangkyu.tistory.com/137)
 
 ### ✏️ Map보다 DTO 클래스를 사용해야 하는 이유
-
-
 
 [출처](https://mangkyu.tistory.com/164)
 
