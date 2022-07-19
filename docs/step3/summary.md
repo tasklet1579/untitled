@@ -87,15 +87,30 @@ This just serves as a hint for the actual transaction subsystem; it will not nec
 A transaction manager which cannot interpret the read-only hint will not throw an exception when asked for a read-only transaction but rather silently ignore the hint. 
 ```
 
-> readOnly는 현재 해당 그 트랜잭션 내에서 데이터를 읽기만 할건지 설정하는 겁니다. 이걸 설정하면 DB 중에 read 락(lock)과 write 락을 따로 쓰는 경우 해당 트랜잭션에서 의도치 않게 데이터를 변경하는 일을 막아줄 뿐 아니라, 하이버네이트를 사용하는 경우에는 FlushMode를 Manual로 변경하여 dirty checking을 생략하게 해준다거나 DB에 따라 DataSource의 Connection 레벨에도 설정되어 약간의 최적화가 가능합니다. 아마 이 부분에서 특정 DB는 말씀하신대로 isolation 레벨이 READ_UNCOMMITED 처럼 동작할 여지도 있는 것 같습니다. 그런데 그게 꼭 좋은 건지는 생각해 봐야겠네요. READ_UNCOMMITED 면 팬텀 Read가 가능하단 거니까 isolation level을 명시적으로 선언해야 할지도 모르겠네요.
+- 의도지 않게 데이터를 변경하는 것을 막아준다.
+- Hibernate를 사용하는 경우에는 FlushMode를 Manual로 변경하여 DIRTY CHECKING 생략이 가능하고 그로 인해 속도 향상 효과를 얻는다.
+- 데이터베이스에 따라 DataSource Connection 레벨에도 설정되어 약간의 최적화가 가능하다.
 
-***DBMS 별 Transaction Read Only에 대한 동작 방식***
+```
+package org.springframework.orm.jpa.vendor;
 
-먼저 readOnly는 DB의 옵션이 아닌, 힌트입니다.
-힌트라는 것은 해당 벤더사의 드라이버를 구현하는 측에서 활용을 할 수도 있고, 활용하지 않을 수 있다는건데요.
-위와 같은 이유로 DB 벤더사 마다 다르게 동작합니다 ㅎㅎ
-말씀하신 것과 같이 readOnly 옵션을 보고 캐시 영역에서의 변경 감지나 플러시는 작동하지 않게 구현한 벤더사도 있고, SELECT 쿼리에 대해 Read DB를 통해서만 조회하도록 구현한 벤더사도 있습니다~
-
+public class HibernateJpaDialect extends DefaultJpaDialect {
+    ...
+    
+    @Nullable
+    protected FlushMode prepareFlushMode(Session session, boolean readOnly) throws PersistenceException {
+        FlushMode flushMode = session.getHibernateFlushMode();
+        if (readOnly) {
+            // We should suppress flushing for a read-only transaction.
+            if (!flushMode.equals(FlushMode.MANUAL)) {
+            session.setHibernateFlushMode(FlushMode.MANUAL);
+            return flushMode;
+            }
+        }
+        ...
+    }
+}
+```
 
 ### ✏️ @Embedded And @Embeddable
 
