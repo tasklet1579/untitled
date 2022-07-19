@@ -1,4 +1,4 @@
-![woowa](docs/image/29e56b30-b506-4224-b034-7944958e19c6.jpg)
+![woowa](docs/image/step1/29e56b30-b506-4224-b034-7944958e19c6.jpg)
 
 ## 🏫 우아한테크캠프 프로4th 후기
 
@@ -34,7 +34,9 @@
 
 ✔️ 1주차 : TDD 기반 로또 구현 : [미션 설명](docs/step1/lotto/readme.md), [내용 정리](docs/step1/lotto/summary.md), 소스 코드
 
-✔️ 2주차 : JPA
+✔️ 2주차 : JPA 실습 : 
+
+✔️ 2주차 : JPA - 질문 삭제하기 리팩토링 : [미션 설명](docs/step2/qna/readme.md)
 
 ✔️ 3주차 : 인수 테스트 주도 개발
 
@@ -52,4 +54,4 @@
 
 # 🎓 수료증
 
-![woowa](docs/image/90f15e16-5ecf-4b0d-a5aa-944bcb965aac.jpg)
+![woowa](docs/image/step1/90f15e16-5ecf-4b0d-a5aa-944bcb965aac.jpg)
