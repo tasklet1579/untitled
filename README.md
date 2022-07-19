@@ -36,7 +36,7 @@
 
 ✔️ 2주차 : JPA 실습 : 
 
-✔️ 2주차 : JPA - 질문 삭제하기 리팩토링 : [미션 설명](docs/step2/qna/readme.md), 소스 코드
+✔️ 2주차 : JPA - 질문 삭제하기 리팩토링 : [미션 설명](docs/step2/qna/readme.md), [내용 정리](docs/step2/qna/summary.md), 소스 코드
 
 ✔️ 3주차 : 인수 테스트 주도 개발
 
