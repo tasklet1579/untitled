@@ -1,4 +1,4 @@
-✔️ vpc : 사용자가 정의하는 가상의 네트워크. CIDR은 C class(x.x.x.x/24)로 생성함
+✔️ vpc : 사용자가 정의하는 가상의 네트워크. CIDR은 C class(192.168.171.0/24)로 생성함
 - public subnet 1 : 192.168.171.0/26
 - public subnet 2 : 192.168.171.64/26
 - admin subnet 1 : 192.168.171.128/27
