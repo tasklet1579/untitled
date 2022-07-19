@@ -147,6 +147,37 @@ public class SessionImpl
 
 위에서 readOnly이면 Hibernate Session의 Flush 모드를 MANUAL로 강제했고 doFlush는 false라서 managedFlush 메서드는 호출되지 않는다.
 
+```
+package org.springframework.data.jpa.repository.support;
+
+@Repository
+@Transactional(readOnly = true)
+public class SimpleJpaRepository<T, ID> implements JpaRepositoryImplementation<T, ID> {
+    private final EntityManager em;
+    
+    ...
+    
+    @Transactional
+    @Override
+    public void deleteById(ID id) {
+        ...
+    }
+    
+    @Override
+    public Optional<T> findById(ID id) {
+        ...
+    }
+    
+    @Transactional
+    @Override
+    public <S extends T> S save(S entity) {
+        ...
+    }
+}
+```
+
+인터페이스의 기본 구현체인 SimpleJpaRepository의 코드를 보면 readOnly 설정을 확인할 수 있다. 
+
 ### ✏️ @Embedded And @Embeddable
 
 
