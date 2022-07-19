@@ -65,6 +65,17 @@ public class StationAcceptanceTest {
 - RestAssured
   - 실제 web environment(Apache Tomcat)을 사용하여 테스트
 
+🧪 테스트 격리
+
+@DirtiesContext
+- 효과적인 테스트 수행을 위해 스프링에서는 context caching 기능 지원
+- @DirtiesContext를 활용하여 캐시 기능을 사용하지 않게 설정
+- 매번 Context를 새로 구성하다보니 시간이 많이 걸림
+
+DatabaseCleanup
+- EntityManager를 활용하여 테이블 이름 조회 후 각 테이블 Truncate 수행
+- ID auto increment 숫자를 1로 복구 시킴
+
 ### ✏️ 커밋 메시지
 
 ### ✏️ 커밋 메시지
