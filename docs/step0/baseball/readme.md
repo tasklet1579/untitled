@@ -51,8 +51,8 @@
   - Reader : 플레이어의 입력 값을 읽고 처리함
   - Umpire : 컴퓨터와 플레이어의 숫자를 비교하고 결과를 생성함
 - view
-  - GameInput : 1부터 9까지 서로 다른 숫자 3개를 선택함
-  - GameOutput : 플레이어의 입력 값을 읽고 처리함
-  - Message : 컴퓨터와 플레이어의 숫자를 비교하고 결과를 생성함
+  - GameInput : 사용자의 입력을 처리함
+  - GameOutput : 사용자에게 메시지를 전달함
+  - Message : 공통적으로 사용되는 메시지를 관리함
 - controller
   - GameLauncher : 숫자 야구 게임의 흐름을 제어함
