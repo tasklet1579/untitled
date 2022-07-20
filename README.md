@@ -42,7 +42,7 @@
 
 ✔️ 4주차 : 그럴듯한 서비스 만들기 : [미션 설명](docs/step4/readme.md), AWS 정리, [망 구성 결과](docs/step4/network.md), [nginx.conf](docs/step4/nginx.conf), [deploy.sh](docs/step4/deploy.sh)
 
-✔️ 5주차 : 인수 테스트 기반 TDD : [미션 설명](docs/step4/readme.md), 소스 코드
+✔️ 5주차 : 인수 테스트 기반 TDD : [미션 설명](docs/step5/readme.md), 소스 코드
 
 ✔️ 6주차 : 서비스 진단하기 : 미션 설명
 
