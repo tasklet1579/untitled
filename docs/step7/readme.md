@@ -1,396 +1,144 @@
-### 지하철 정보 서비스
+### 레거시 코드 리팩터링
 
-미션 설명
-```
-인수 테스트를 기반으로 LineService를 리팩터링하세요.
+🎯 학습 목표
 
-지하철 노선도 서비스를 단계별로 구현하세요.
-```
+많은 기업들이 "서비스를 안정적으로 운영하면서 레거시 코드를 리팩터링할 수 있는 역량을 갖춘 개발자"를 요구한다.
+- 레거시 프로젝트를 리팩터링하는 경험을 통해 서비스를 안정적으로 운영하면서 레거시 코드를 리팩터링할 수 있는 역량을 키운다.
+- 프로젝트를 만드는 단계에서 끝나는 것이 아니라 프로젝트를 완료한 후 일정 기간 유지보수를 함으로써 레거시 코드를 리팩터링하는 경험을 쌓는다.
 
-지하철 경로 조회
-
-![image](./image/image01.png)
-
-인증을 통한 기능 구현
-
-- 로그인 화면
-
-![image](./image/image02.png)
-
-- 내 정보 관리 화면
-
-![image](./image/image03.png)
-
-- 즐겨찾기 화면
-
-![image](./image/image04.png)
-
-요금 조회
-
-![image](./image/image05.png)
+주요 내용
+- 리팩터링 프로세스와 일반 원칙 이해하기
+- 프로그램을 더 쉽게 이해하고 변경하는 유용한 리팩터링 빠르게 적용하기
+- 리팩터링 가능성이 있는 코드에서 풍기는 악취 인식하기
+- 각 리팩터링 기법의 개념, 동기부여, 역학 및 간단한 사례 살펴보기
+- 리팩터링을 수행하는 견고한 테스트 구축하기
+- 리팩터링의 장단점과 장애물 인식하기
 
 ---
 
-### 1. 인수 테스트 기반 리팩터링
+### 1. 테스트를 통한 코드 보호
 
-요구사항
-- LineService 리팩터링
-- (선택) LineSectionAcceptanceTest 리팩터링
+✏️ 요구 사항
+- kitchenpos 패키지의 코드를 보고 키친포스의 요구 사항을 [마크다운](https://dooray.com/htmls/guides/markdown_ko_KR.html) 문법을 참고해 작성한다.
+- 정리한 키친포스의 요구 사항을 토대로 테스트 코드를 작성한다. 모든 Business Object에 대한 테스트 코드를 작성한다.
+- @SpringBootTest를 이용한 통합 테스트 코드 또는 @ExtendWith(MockitoExtension.class)를 이용한 단위 테스트 코드를 작성한다.
+  - [Testing in Spring Boot](https://www.baeldung.com/spring-boot-testing)
+  - [Exploring the Spring Boot TestRestTemplate](https://www.baeldung.com/spring-boot-testresttemplate)
+
+Lombok 주의사항
+- 무분별한 setter 메서드 사용
+- 객체 간에 상호 참조하는 경우 무한 루프에 빠질 가능성
+- [Lombok 사용상 주의점(Pitfall)](https://kwonnam.pe.kr/wiki/java/lombok/pitfall)
+
+> 이번 과정에서는 Lombok 없이 미션을 진행해 본다.
+
+힌트
+
+http 디렉터리의 .http 파일(HTTP client)을 보고 어떤 요청을 받는지 참고한다.
+- [IntelliJ의 .http를 사용해 Postman 대체하기](https://jojoldu.tistory.com/266)
 
 ```
-1. Domain으로 옮길 로직을 찾기
-- 스프링 빈을 사용하는 객체와 의존하는 로직을 제외하고는 도메인으로 옮길 예정
-- 객체지향 생활체조를 참고
+###
+POST {{host}}/api/menu-groups
+Content-Type: kitchenpos.application/json
 
-2. Domain의 단위 테스트를 작성하기
-- 서비스 레이어에서 옮겨 올 로직의 기능을 테스트
-- SectionsTest나 LineTest 클래스가 생성될 수 있음
+{
+  "name": "추천메뉴"
+}
 
-3. 로직을 옮기기
-- 기존 로직을 지우지 말고 새로운 로직을 만들어 수행
-- 정상 동작 확인 후 기존 로직 제거
+###
+GET {{host}}/api/menus-groups
+
+###
+
 ```
 
-■ 요구사항 설명
-
-인수 테스트 기반 리팩터링
-- LineService의 비즈니스 로직을 도메인으로 옮기기
-- 한번에 많은 부분을 고치려 하지 말고 나눠서 부분부분 리팩터링하기
-- 전체 기능은 인수 테스트로 보호한 뒤 세부 기능을 TDD로 리팩터링하기
-
-(선택) 인수 테스트 통합
-- API를 검증하기 보다는 시나리오, 흐름을 검증하는 테스트로 리팩터링 하기
-- 반드시 하나의 시나리오로 통합할 필요는 없음, 기능의 인수 조건을 설명할 때 하나 이상의 시나리오가 필요한 경우 여러개의 시나리오를 만들어 인수 테스트를 작성할 수 있음
-
-인수 조건 예시
+src/main/resources/db/migration 디렉터리의 .sql 파일을 보고 어떤 관계로 이루어져 있는지 참고한다.
 ```
-Feature: 지하철 구간 관련 기능
+id BIGINT(20) NOT NULL AUTO_INCREMENT,
+order_table_id BIGINT(20) NOT NULL,
+order_status VARCHAR(255) NOT NULL,
+ordered_time DATETIME NOT NULL,
+PRIMARY KEY (id)
+```
 
-  Background 
-    Given 지하철역 등록되어 있음
-    And 지하철 노선 등록되어 있음
-    And 지하철 노선에 지하철역 등록되어 있음
+아래의 예제를 참고한다.
+```
+### 상품
 
-  Scenario: 지하철 구간을 관리
-    When 지하철 구간 등록 요청
-    Then 지하철 구간 등록됨
-    When 지하철 노선에 등록된 역 목록 조회 요청
-    Then 등록한 지하철 구간이 반영된 역 목록이 조회됨
-    When 지하철 구간 삭제 요청
-    Then 지하철 구간 삭제됨
-    When 지하철 노선에 등록된 역 목록 조회 요청
-    Then 삭제한 지하철 구간이 반영된 역 목록이 조회됨
+* 상품을 등록할 수 있다.
+* 상품의 가격이 올바르지 않으면 등록할 수 없다.
+    * 상품의 가격은 0 원 이상이어야 한다.
+* 상품의 목록을 조회할 수 있다.
 ```
 
 ---
 
-### 2. 경로 조회 기능
+### 2. 서비스 리팩터링
 
-요구사항
-- 최단 경로 조회 인수 테스트 만들기
-- 최단 경로 조회 기능 구현하기
+✏️ 요구 사항
 
-요청 / 응답 포맷
-- Request
-```
-HTTP/1.1 200 
-Request method:	GET
-Request URI:	http://localhost:55494/paths?source=1&target=6
-Headers: 	Accept=application/json
-		Content-Type=application/json; charset=UTF-8
-```
+단위 테스트하기 어려운 코드와 단위 테스트 가능한 코드를 분리해 단위 테스트 가능한 코드에 대해 단위 테스트를 구현한다.
+- Spring Data JPA 사용 시 spring.jpa.hibernate.ddl-auto=validate 옵션을 필수로 준다.
+- 데이터베이스 스키마 변경 및 마이그레이션이 필요하다면 아래 문서를 적극 활용한다.
+  - [DB도 형상관리를 해보자!](https://meetup.toast.com/posts/173)
 
-- Response
-```
-HTTP/1.1 200 
-Content-Type: application/json
-Transfer-Encoding: chunked
-Date: Sat, 09 May 2020 14:54:11 GMT
-Keep-Alive: timeout=60
-Connection: keep-alive
+비즈니스 로직은 어느 곳에 구현하는 것이 좋을까?
 
-{
-    "stations": [
-        {
-            "id": 5,
-            "name": "양재시민의숲역",
-            "createdAt": "2020-05-09T23:54:12.007"
-        },
-        {
-            "id": 4,
-            "name": "양재역",
-            "createdAt": "2020-05-09T23:54:11.995"
-        },
-        {
-            "id": 1,
-            "name": "강남역",
-            "createdAt": "2020-05-09T23:54:11.855"
-        },
-        {
-            "id": 2,
-            "name": "역삼역",
-            "createdAt": "2020-05-09T23:54:11.876"
-        },
-        {
-            "id": 3,
-            "name": "선릉역",
-            "createdAt": "2020-05-09T23:54:11.893"
-        }
-    ],
-    "distance": 40
-}
-```
+다음과 같은 계층형 아키텍처 기반 하에서 핵심 비즈니스 로직은 어디에 구현하는 것이 맞을까?
+
+![image](../image/step7/image01.png)
+
+응용 애플리케이션을 개발할 때 TDD, OOP를 적용하려면 핵심 비즈니스 로직을 도메인 객체가 담당하도록 구현하는 것이다.
+즉, 테스트하기 쉬운 부분과 테스트하기 어려운 부분을 분리해 테스트하기 쉬운 부분에 대한 단위 테스트를 구현하고 지속적인 리팩터링을 한다.
+
+힌트
+
+테스트하기 쉬운 부분과 어려운 부분을 분리
+
+> 모델에 비즈니스 로직을 최대한 모으면 순수히 해당 언어의 클래스 문법으로만 작성되고, 그 어떤 프레임워크나 외부 종속 없이도 테스트 가능한 객체가 된다. 이런 객체는 테스트하기 매우 용이해서 더 많은 테스트 코드를 작성하게 하는 순기능이 있다.
+
+한 번에 완벽한 설계를 하겠다는 욕심을 버려라.
+
+> 초기에는 도메인에 대한 이해도가 낮아 설계 품질이 낮다. 반복적인 설계와 구현을 통해 도메인에 대한 이해도를 높인다. 도메인에 대한 이해도가 높아야 추상화 수준도 높아진다.
+
+모델에 setter 메서드 넣지 않기
+
+> 모델에 getter, setter 메서드를 무조건 추가하는 것은 좋지 않은 버릇이다. 특히 setter 메서드는 도메인의 핵심 개념이나 의도를 코드에서 사라지게 한다. setter 메서드의 또 다른 문제는 도메인 객체를 생성할 때 완전한 상태가 아닐 수도 있다는 것이다. 도메인 객체가 불완전한 상태로 사용되는 것을 막으려면 생성 시점에 필요한 것을 전달해 주어야 한다.
 
 ---
 
-### 3. 인증을 통한 기능 구현
+### 3. 의존성 리팩터링
 
-요구사항
-- 토큰 발급 기능 (로그인) 인수 테스트 만들기
-- 인증 - 내 정보 조회 기능 완성하기
-- 인증 - 즐겨 찾기 기능 완성하기
+✏️ 요구 사항
 
-■ 요구사항 설명
+이전 단계에서 객체 지향 설계를 의식하였다면 아래의 문제가 존재한다. 의존성 관점에서 설계를 검토해 본다.
+- 메뉴의 이름과 가격이 변경되면 주문 항목도 함께 변경된다. 메뉴 정보가 변경되더라도 주문 항목이 변경되지 않게 구현한다.
+- 클래스 간의 방향도 중요하고 패키지 간의 방향도 중요하다. 클래스 사이, 패키지 사이의 의존 관계는 단방향이 되도록 해야 한다.
+- 데이터베이스 스키마 변경 및 마이그레이션이 필요하다면 아래 문서를 적극 활용한다.
+  - [DB도 형상관리를 해보자!](https://meetup.toast.com/posts/173)
 
-토큰 발급 인수 테스트
-- 토큰 발급(로그인)을 검증하는 인수 테스트 만들기
-- AuthAcceptanceTest 인수 테스트 만들기
-- 유효하지 않은 토큰으로 /members/me 요청을 보낼 경우에 대한 예외 처리
+힌트
+- 함께 생성되고 함께 삭제되는 객체들을 함께 묶어라
+- 불변식을 지켜야 하는 객체들을 함께 묶어라
+- 가능하면 분리하라
 
-인수 조건
-```
-Feature: 로그인 기능
-
-  Scenario: 로그인을 시도한다.
-    Given 회원 등록되어 있음
-    When 로그인 요청
-    Then 로그인 됨
-```
-
-요청 / 응답 포맷
-- Request
-```
-POST /login/token HTTP/1.1
-content-type: application/json; charset=UTF-8
-accept: application/json
-{
-    "password": "password",
-    "email": "email@email.com"
-}
-```
-
-- Response
-```
-HTTP/1.1 200 
-Content-Type: application/json
-Transfer-Encoding: chunked
-Date: Sun, 27 Dec 2020 04:32:26 GMT
-Keep-Alive: timeout=60
-Connection: keep-alive
-
-{
-    "accessToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJpYXQiOjE2MDkwNDM1NDYsImV4cCI6MTYwOTA0NzE0Nn0.dwBfYOzG_4MXj48Zn5Nmc3FjB0OuVYyNzGqFLu52syY"
-}
-```
-
-내 정보 조회 기능
-
-내 정보 관리 인수 테스트
-- MemberAcceptanceTest 클래스의 manageMyInfo메서드에 인수 테스트를 추가하기
-- 내 정보 조회, 수정, 삭제 기능을 /members/me 라는 URI 요청으로 동작하도록 검증
-- 로그인 후 발급 받은 토큰을 포함해서 요청 하기
-
-```
-@DisplayName("나의 정보를 관리한다.")
-@Test
-void manageMyInfo() {
-
-}
-```
-
-토큰을 통한 인증
-- /members/me 요청 시 토큰을 확인하여 로그인 정보를 받아올 수 있도록 하기
-- @AuthenticationPrincipal과 AuthenticationPrincipalArgumentResolver을 활용하기
-- 아래의 기능이 제대로 동작하도록 구현하기
-
-```
-@GetMapping("/members/me")
-public ResponseEntity<MemberResponse> findMemberOfMine(LoginMember loginMember) {
-    MemberResponse member = memberService.findMember(loginMember.getId());
-    return ResponseEntity.ok().body(member);
-}
-
-@PutMapping("/members/me")
-public ResponseEntity<MemberResponse> updateMemberOfMine(LoginMember loginMember, @RequestBody MemberRequest param) {
-    memberService.updateMember(loginMember.getId(), param);
-    return ResponseEntity.ok().build();
-}
-
-@DeleteMapping("/members/me")
-public ResponseEntity<MemberResponse> deleteMemberOfMine(LoginMember loginMember) {
-    memberService.deleteMember(loginMember.getId());
-    return ResponseEntity.noContent().build();
-}
-```
-
-즐겨 찾기 기능 구현하기
-- 즐겨찾기 기능을 완성하기
-- 인증을 포함하여 전체 ATDD 사이클을 경험할 수 있도록 기능을 구현하기
-
-인수 조건
-```
-Feature: 즐겨찾기를 관리한다.
-
-  Background 
-    Given 지하철역 등록되어 있음
-    And 지하철 노선 등록되어 있음
-    And 지하철 노선에 지하철역 등록되어 있음
-    And 회원 등록되어 있음
-    And 로그인 되어있음
-
-  Scenario: 즐겨찾기를 관리
-    When 즐겨찾기 생성을 요청
-    Then 즐겨찾기 생성됨
-    When 즐겨찾기 목록 조회 요청
-    Then 즐겨찾기 목록 조회됨
-    When 즐겨찾기 삭제 요청
-    Then 즐겨찾기 삭제됨
-```
-
-생성 요청 / 응답 포맷
-- Request
-```
-POST /favorites HTTP/1.1
-authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJpYXQiOjE2MDkwNDM1NDYsImV4cCI6MTYwOTA0NzE0Nn0.dwBfYOzG_4MXj48Zn5Nmc3FjB0OuVYyNzGqFLu52syY
-accept: */*
-content-type: application/json; charset=UTF-8
-content-length: 27
-host: localhost:50336
-connection: Keep-Alive
-user-agent: Apache-HttpClient/4.5.13 (Java/14.0.2)
-accept-encoding: gzip,deflate
-{
-    "source": "1",
-    "target": "3"
-}
-```
-
-- Response
-```
-HTTP/1.1 201 Created
-Keep-Alive: timeout=60
-Connection: keep-alive
-Content-Length: 0
-Date: Sun, 27 Dec 2020 04:32:26 GMT
-Location: /favorites/1
-```
-
-목록 조회 요청 / 응답 포맷
-- Request
-```
-GET /favorites HTTP/1.1
-authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJpYXQiOjE2MDkwNDM1NDYsImV4cCI6MTYwOTA0NzE0Nn0.dwBfYOzG_4MXj48Zn5Nmc3FjB0OuVYyNzGqFLu52syY
-accept: application/json
-host: localhost:50336
-connection: Keep-Alive
-user-agent: Apache-HttpClient/4.5.13 (Java/14.0.2)
-accept-encoding: gzip,deflate
-```
-
-- Response
-```
-HTTP/1.1 200 
-Content-Type: application/json
-Transfer-Encoding: chunked
-Date: Sun, 27 Dec 2020 04:32:26 GMT
-Keep-Alive: timeout=60
-Connection: keep-alive
-
-[
-    {
-        "id": 1,
-        "source": {
-            "id": 1,
-            "name": "강남역",
-            "createdDate": "2020-12-27T13:32:26.364439",
-            "modifiedDate": "2020-12-27T13:32:26.364439"
-        },
-        "target": {
-            "id": 3,
-            "name": "정자역",
-            "createdDate": "2020-12-27T13:32:26.486256",
-            "modifiedDate": "2020-12-27T13:32:26.486256"
-        }
-    }
-]
-```
-
-삭제 요청 /응답 포맷
-- Request
-```
-DELETE /favorites/1 HTTP/1.1
-authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJpYXQiOjE2MDkwNDM1NDYsImV4cCI6MTYwOTA0NzE0Nn0.dwBfYOzG_4MXj48Zn5Nmc3FjB0OuVYyNzGqFLu52syY
-accept: */*
-host: localhost:50336
-connection: Keep-Alive
-user-agent: Apache-HttpClient/4.5.13 (Java/14.0.2)
-accept-encoding: gzip,deflate
-```
-
-- Response
-```
-HTTP/1.1 204 No Content
-Keep-Alive: timeout=60
-Connection: keep-alive
-Date: Sun, 27 Dec 2020 04:32:26 GMT
-```
+연관 관계는 다양하게 구현할 수 있다.
+- 직접 참조 (객체 참조를 이용한 연관 관계)
+- 간접 참조 (리포지토리를 통한 탐색)
 
 ---
 
-### 4. 요금 조회
+### 4. 멀티 모듈 적용
 
-요구사항
-- 경로 조회 시 거리 기준 요금 정보 포함하기
-- 노선별 추가 요금 정책 추가
-- 연령별 할인 정책 추가
+✏️ 요구 사항
 
-■ 요구사항 설명
+- Gradle의 멀티 모듈 개념을 적용해 자유롭게 서로 다른 프로젝트로 분리해 본다.
+  - 컨텍스트 간의 독립된 모듈로 만들 수 있다.
+  - 계층 간의 독립된 모듈로 만들 수 있다.
+- 의존성 주입, HTTP 요청/응답, 이벤트 발행/구독 등 다양한 방식으로 모듈 간 데이터를 주고받을 수 있다.
 
-거리별 요금 정책
-- 기본운임(10㎞ 이내) : 기본운임 1,250원
-- 이용 거리초과 시 추가운임 부과
-    - 10km초과∼50km까지(5km마다 100원)
-    - 50km초과 시 (8km마다 100원)
-```
-지하철 운임은 거리비례제로 책정됩니다. (실제 이동한 경로가 아닌 최단거리 기준으로 계산) 
-```
+힌트
 
-수정된 인수 조건
-```
-Feature: 지하철 경로 검색
-
-  Scenario: 두 역의 최단 거리 경로를 조회
-    Given 지하철역이 등록되어있음
-    And 지하철 노선이 등록되어있음
-    And 지하철 노선에 지하철역이 등록되어있음
-    When 출발역에서 도착역까지의 최단 거리 경로 조회를 요청
-    Then 최단 거리 경로를 응답
-    And 총 거리도 함께 응답함
-    And ** 지하철 이용 요금도 함께 응답함 **
-```
-
-노선별 추가 요금 정책
-- 노선에 추가 요금 필드를 추가
-- 추가 요금이 있는 노선을 이용 할 경우 측정된 요금에 추가
-    - ex) 900원 추가 요금이 있는 노선 8km 이용 시 1,250원 -> 2,150원
-    - ex) 900원 추가 요금이 있는 노선 12km 이용 시 1,350원 -> 2,250원
-- 경로 중 추가요금이 있는 노선을 환승 하여 이용 할 경우 가장 높은 금액의 추가 요금만 적용
-    - ex) 0원, 500원, 900원의 추가 요금이 있는 노선들을 경유하여 8km 이용 시 1,250원 -> 2,150원
-
-로그인 사용자의 경우 연령별 요금 할인 적용
-- 청소년: 운임에서 350원을 공제한 금액의 20%할인
-- 어린이: 운임에서 350원을 공제한 금액의 50%할인
-```
-- 청소년: 13세 이상~19세 미만
-- 어린이: 6세 이상~ 13세 미만
-```
+- [Gradle 멀티 프로젝트 관리](https://jojoldu.tistory.com/123)
+- [Gradle Multi Project](https://kwonnam.pe.kr/wiki/gradle/multiproject)
