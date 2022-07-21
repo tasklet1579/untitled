@@ -1,12 +1,13 @@
 ### 🧱 line
 
 - domain
-  - Line : 지하철 노선
-    - 지하철 역 조회
-    - 지하철 구간 추가
-    - 지하철 구간 삭제
-  - Section : 지하철 구간
-  - Sections : 지하철 구간 일급 컬렉션
+  - Line
+    - 지하철 노선에 포함된 역 조회
+    - 지하철 구간 추가, 삭제
+  - Section
+    - ㅇㅇ
+  - Sections
+    - ㅇㅇ
 - service
   - LineService
 
@@ -16,3 +17,4 @@
   - Station
 - service
   - StationService
+    - 지하철 역 저장, 조회, 삭제
