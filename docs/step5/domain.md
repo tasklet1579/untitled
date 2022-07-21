@@ -7,8 +7,6 @@
 - service
   - LineService
 
-​
-
 ### 🧱 station
 
 - domain
