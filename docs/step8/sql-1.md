@@ -17,6 +17,8 @@ SELECT A.ProductID
  ORDER BY A.TotalQuantity DESC;
 ```
 
+​
+
 ✍️ 많이 주문한 순으로 고객 리스트(ID, 고객명)를 구해주세요.
 
 ```
@@ -36,6 +38,8 @@ SELECT Customers.CustomerID
     ON Customers.CustomerID = Orders.CustomerID
  ORDER BY Orders.OrderQuantity DESC;
 ```
+
+​
 
 ✍️ 많은 돈을 지출한 순으로 고객 리스트를 구해주세요.
 
