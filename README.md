@@ -20,33 +20,33 @@
 
 ## 🏎️ 프리코스
 
-✔️ 1주차 : 숫자 야구 게임 : [미션 설명](docs/step0/baseball/readme.md), [MVC 정리](docs/step0/baseball/mvc.md), 소스 코드
+✔️ 1주차 : 숫자 야구 게임 : [미션 설명](docs/step0/baseball/readme.md), [MVC 정리](docs/step0/baseball/mvc.md)
 
-✔️ 2주차 : 자동차 경주 게임 : [미션 설명](docs/step0/racingcar/readme.md), 소스 코드
+✔️ 2주차 : 자동차 경주 게임 : [미션 설명](docs/step0/racingcar/readme.md)
 
 ​
 
 ## 💡 주차별 미션
 
-✔️ 1주차 : 학습 테스트 실습 : [미션 설명](docs/step1/study/readme.md), [내용 정리](docs/step1/study/summary.md), [소스 코드](https://github.com/tasklet1579/java-lotto-pro)
+✔️ 1주차 : 학습 테스트 실습 : [미션 설명](docs/step1/study/readme.md), [내용 정리](docs/step1/study/summary.md)
 
-✔️ 1주차 : 문자열 덧셈 계산기 : [미션 설명](docs/step1/calculator/readme.md), [내용 정리](docs/step1/calculator/summary.md), 소스 코드 
+✔️ 1주차 : 문자열 덧셈 계산기 : [미션 설명](docs/step1/calculator/readme.md), [내용 정리](docs/step1/calculator/summary.md)
 
-✔️ 1주차 : TDD 기반 로또 구현 : [미션 설명](docs/step1/lotto/readme.md), [내용 정리](docs/step1/lotto/summary.md), 소스 코드
+✔️ 1주차 : TDD 기반 로또 구현 : [미션 설명](docs/step1/lotto/readme.md), [내용 정리](docs/step1/lotto/summary.md)
 
 ✔️ 2주차 : JPA : [실습1](docs/step2/subway/handson1.md), [실습2](docs/step2/subway/handson2.md), [내용 정리](docs/step2/subway/summary.md)
 
-✔️ 2주차 : 질문 삭제하기 리팩토링 : [미션 설명](docs/step2/qna/readme.md), [내용 정리](docs/step2/qna/summary.md), 소스 코드
+✔️ 2주차 : 질문 삭제하기 리팩토링 : [미션 설명](docs/step2/qna/readme.md), [내용 정리](docs/step2/qna/summary.md)
 
-✔️ 3주차 : 인수 테스트 주도 개발 : [미션 설명](docs/step3/readme.md), [내용 정리](docs/step3/summary.md), 소스 코드
+✔️ 3주차 : 인수 테스트 주도 개발 : [미션 설명](docs/step3/readme.md), [내용 정리](docs/step3/summary.md)
 
 ✔️ 4주차 : 그럴듯한 서비스 만들기 : [미션 설명](docs/step4/readme.md), 내용 정리 
 
-✔️ 5주차 : 인수 테스트 기반 TDD : [미션 설명](docs/step5/readme.md), [내용 정리](docs/step5/summary.md), 소스 코드
+✔️ 5주차 : 인수 테스트 기반 TDD : [미션 설명](docs/step5/readme.md), [내용 정리](docs/step5/summary.md)
 
 ✔️ 6주차 : 서비스 진단하기 : [미션 설명](docs/step6/readme.md)
 
-✔️ 7주차 : 레거시 코드 리팩토링 : [미션 설명](docs/step7/readme.md), 내용 정리, 소스 코드
+✔️ 7주차 : 레거시 코드 리팩토링 : [미션 설명](docs/step7/readme.md), 내용 정리
 
 ✔️ 8주차 : 안정적인 서비스 만들기 : [미션 설명](docs/step8/readme.md), 내용 정리
 
