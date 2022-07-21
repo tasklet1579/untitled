@@ -2,12 +2,12 @@
 
 ```
 SELECT manager.employee_id
-	,  employee.last_name
-	,  salary.annual_income
-	,  `position`.position_name
-	,  record.`time`
-	,  record.region
-	,  record.record_symbol
+    ,  employee.last_name
+    ,  salary.annual_income
+    ,  `position`.position_name
+    ,  record.`time`
+    ,  record.region
+    ,  record.record_symbol
   FROM tuning.department
  INNER JOIN tuning.manager
     ON department.id = manager.department_id
