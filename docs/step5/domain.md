@@ -8,13 +8,8 @@
     - ㅇㅇ
   - Sections
     - ㅇㅇ
-- service
-  - LineService
 
 ### 🧱 station
 
 - domain
   - Station
-- service
-  - StationService
-    - 지하철 역 저장, 조회, 삭제
