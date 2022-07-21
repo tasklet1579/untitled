@@ -15,6 +15,16 @@ SELECT A.ProductID
         HAVING SUM(OrderDetails.Quantity) >= 200
     ) A
  ORDER BY A.TotalQuantity DESC;
+
+
+ProductID	ProductName                 TotalQuantity
+60	        Camembert Pierrot           1577
+59	        Raclette Courdavault        1496
+31	        Gorgonzola Telino           1397
+56	        Gnocchi di nonna Alice      1263
+16	        Pavlova                     1158
+75	        Rhönbräu Klosterbier        1155
+...
 ```
 
 ​
