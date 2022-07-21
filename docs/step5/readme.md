@@ -9,25 +9,15 @@
 
 지하철 경로 조회
 
-![image](../image/step5/image01.png)
-
 인증을 통한 기능 구현
 
-- 로그인 화면
+- 로그인 
 
-![image](../image/step5/image02.png)
+- 내 정보 관리 
 
-- 내 정보 관리 화면
-
-![image](../image/step5/image03.png)
-
-- 즐겨찾기 화면
-
-![image](../image/step5/image04.png)
+- 즐겨찾기 
 
 요금 조회
-
-![image](../image/step5/image05.png)
 
 ---
 
