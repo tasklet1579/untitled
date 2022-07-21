@@ -48,7 +48,7 @@
 
 ✔️ 7주차 : 레거시 코드 리팩토링 : [미션 설명](docs/step7/readme.md)
 
-✔️ 8주차 : 안정적인 서비스 만들기 : [미션 설명](docs/step8/readme.md)
+✔️ 8주차 : 안정적인 서비스 만들기 : [미션 설명](docs/step8/readme.md), 내용 정리
 
 ​
 
