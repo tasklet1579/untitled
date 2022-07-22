@@ -79,3 +79,9 @@ public class LineTest {
 - [더즈, 티키의 Classic TDD VS Mockist TDD](https://www.youtube.com/watch?v=n01foM9tsRo)
 - [의식적인 연습으로 TDD, 리팩토링 연습하기](https://www.youtube.com/watch?v=cVxqrGHxutU)
 - [레거시코드에 테스트 추가하는 또 하나의 방법](https://www.youtube.com/watch?v=Dct4bGKCmI8)
+
+### ✏️ 알아두면 좋은 것들
+
+- [Spring Boot에서 Custom Annotation 활용하기](https://linkeverything.github.io/springboot/spring-aop/)
+- [@Valid와 @Validated를 이용한 유효성 검증의 동작 원리 및 사용법 예시](https://mangkyu.tistory.com/174)
+- [커스텀 애노테이션(Custom Annotation) 만들어 직접 Validation 유효성 검사하기](https://mangkyu.tistory.com/206)
