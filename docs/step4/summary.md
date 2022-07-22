@@ -6,7 +6,7 @@ IP는 일반적으로 192.168.0.1과 같이 마침표로 구분된 4개의 숫�
 
 
 
-[IP 클래스 • 서브넷 마스크 • 서브넷팅 💯 완벽 이해하기](https://inpa.tistory.com/entry/WEB-IP-%ED%81%B4%EB%9E%98%EC%8A%A4-%EC%84%9C%EB%B8%8C%EB%84%B7-%EB%A7%88%EC%8A%A4%ED%81%AC-%EC%84%9C%EB%B8%8C%EB%84%B7%ED%8C%85-%EC%B4%9D%EC%A0%95%EB%A6%AC)
+[IP 클래스, 서브넷 마스크, 서브넷팅 완벽 이해하기](https://inpa.tistory.com/entry/WEB-IP-%ED%81%B4%EB%9E%98%EC%8A%A4-%EC%84%9C%EB%B8%8C%EB%84%B7-%EB%A7%88%EC%8A%A4%ED%81%AC-%EC%84%9C%EB%B8%8C%EB%84%B7%ED%8C%85-%EC%B4%9D%EC%A0%95%EB%A6%AC)
 
 ### ✏️ ATDD
 
