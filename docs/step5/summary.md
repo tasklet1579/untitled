@@ -28,13 +28,24 @@ public class LineTest {
 
 협력 객체를 실제 객체로 사용하는지 Mock(가짜) 객체로 사용하는지에 따라 테스트 구현이 달라짐
 
+실제 객체를 사용 하면 협력 객체의 행위를 협력 객체 스스로가 정의
+
+가짜 객체를 사용 하면 협력 객체의 행위를 테스트가 정의
+
+***실제 객체를 사용할 경우***
+
+실제 객체를 사용 할 경우 협력 객체의 상세 구현에 대해서 알 필요가 없음
+
+하지만 협력 객체의 정상 동작 여부에 영향을 받음
+
+***가짜 객체를 사용할 경우***
+
+테스트 대상을 검증할 때 외부 요인(협력 객체)으로 부터 철저히 격리
+
+하지만 테스트가 협력 객체의 상세 구현을 알아야 함
 
 참고 자료
-
-[테스트하기 쉬운 코드로 개발하기](https://www.youtube.com/watch?v=Cz_a2gQp63c)
-
-[더즈, 티키의 Classic TDD VS Mockist TDD](https://www.youtube.com/watch?v=n01foM9tsRo)
-
-[의식적인 연습으로 TDD, 리팩토링 연습하기](https://www.youtube.com/watch?v=cVxqrGHxutU)
-
-[레거시코드에 테스트 추가하는 또 하나의 방법](https://www.youtube.com/watch?v=Dct4bGKCmI8)
+- [테스트하기 쉬운 코드로 개발하기](https://www.youtube.com/watch?v=Cz_a2gQp63c)
+- [더즈, 티키의 Classic TDD VS Mockist TDD](https://www.youtube.com/watch?v=n01foM9tsRo)
+- [의식적인 연습으로 TDD, 리팩토링 연습하기](https://www.youtube.com/watch?v=cVxqrGHxutU)
+- [레거시코드에 테스트 추가하는 또 하나의 방법](https://www.youtube.com/watch?v=Dct4bGKCmI8)

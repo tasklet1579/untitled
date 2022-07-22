@@ -125,6 +125,7 @@ Subnet Mask의 1의 갯수가 26개이면 네번째 옥텟의 최상위 2개의 
 - 10.0.0.255 : 브로드 캐스트 주소
 
 ### ✏️ CIDR 계산기
+
 - [cidr.xyz](https://cidr.xyz/)
 - [ipaddressguide.com](https://www.ipaddressguide.com/)
 - [network00.com](https://network00.com/NetworkTools/IPv4AddressPlanner/)
