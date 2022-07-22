@@ -78,8 +78,6 @@ public abstract class BaseEntity {
 public class Line extends BaseEntity {
 ```
 
----
-
 ### ✏️ JPA
 
 엔티티 비교
@@ -197,8 +195,6 @@ private Station station;
 @JoinColumn(name = "station_id", unique = true)
 private Station station;
 ```
-
----
 
 ### ✏️ 테스트 간의 격리
 스프링 테스트에서 애플리케이션 컨텍스트는 공유해서 사용한다.
