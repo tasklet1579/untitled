@@ -94,6 +94,8 @@ Subnetting은 IP 주소를 효울적으로 나누어 사용하기 위한 방법�
 
 ### ✏️ Classless Inter-Domain Routing
 
+클래스 없는 도메인간 라우팅 기법이라는 뜻으로 IP주소 클래스 체계를 사용하는 것보다 더욱 능동적의로 할수 잇도록 한다.
+
 
 
 ### ✏️ CIDR 계산기
