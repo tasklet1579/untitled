@@ -55,7 +55,12 @@ public class LineTest {
 
 테스트 대상을 협력 객체로부터 격리하기 위해 테스트 대상이 의존하는 모든 것을 가짜 객체로 대체
 
+따라서 Line과 Station 모두 잘 동작하는지 검증한다는 것은 단위와 단위의 통합이 잘 동작하는지를 검증하는 것
+
+
+
 참고 자료
+- [그게 통합 테스트라고? 정말?](https://justhackem.wordpress.com/2018/01/16/is-that-integration-test-really/)
 - [테스트하기 쉬운 코드로 개발하기](https://www.youtube.com/watch?v=Cz_a2gQp63c)
 - [더즈, 티키의 Classic TDD VS Mockist TDD](https://www.youtube.com/watch?v=n01foM9tsRo)
 - [의식적인 연습으로 TDD, 리팩토링 연습하기](https://www.youtube.com/watch?v=cVxqrGHxutU)
