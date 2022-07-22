@@ -20,7 +20,7 @@
 
 ## 🏎️ 프리코스
 
-✔️ 1주차 : 숫자 야구 게임 : [미션 설명](docs/step0/baseball/readme.md), [MVC 정리](docs/step0/baseball/mvc.md)
+✔️ 1주차 : 숫자 야구 게임 : [미션 설명](docs/step0/baseball/readme.md), [내용 정리](docs/step0/baseball/mvc.md)
 
 ✔️ 2주차 : 자동차 경주 게임 : [미션 설명](docs/step0/racingcar/readme.md)
 
