@@ -43,6 +43,10 @@ public class LineTest {
 
 하지만 테스트가 협력 객체의 상세 구현을 알아야 함
 
+### ✏️ Classist vs Mockist
+
+
+
 참고 자료
 - [테스트하기 쉬운 코드로 개발하기](https://www.youtube.com/watch?v=Cz_a2gQp63c)
 - [더즈, 티키의 Classic TDD VS Mockist TDD](https://www.youtube.com/watch?v=n01foM9tsRo)
