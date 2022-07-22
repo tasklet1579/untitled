@@ -53,10 +53,6 @@ IP 주소에서 사용할 수 없는 주소가 두가지가 존재한다.
 
 이외에도 192.168.0.1과 같이 공유기(라우터)가 사용하는 IP 주소가 있다.
 
-[네트워크 구축 및 운용_7주차_1_IP Address](https://www.youtube.com/watch?v=b7Wk-6w5vgg)
-
-[IP 클래스, 서브넷 마스크, 서브넷팅 완벽 이해하기](https://inpa.tistory.com/entry/WEB-IP-%ED%81%B4%EB%9E%98%EC%8A%A4-%EC%84%9C%EB%B8%8C%EB%84%B7-%EB%A7%88%EC%8A%A4%ED%81%AC-%EC%84%9C%EB%B8%8C%EB%84%B7%ED%8C%85-%EC%B4%9D%EC%A0%95%EB%A6%AC)
-
 ### ✏️ Subnet
 
 부족한 IP 주소를 해결하기 위해 IP 클래스를 도입했지만 여전히 비효율적인 현상이 계속 되었고 IP를 사용하는 네트워크 장치 수에 따라 효율적으로 사용할 수 있는 Subnet 개념이 등장하게 되었다.
@@ -77,12 +73,23 @@ Subnet Mask를 보다 간소화해서 표현할 수도 있는데 IP 주소가 19
 
 /24 라는 뜻은 32비트 중 앞에서부터 차례대로 1의 개수가 24개라는 의미이다. 즉, 네트워크에 해당하는 비트의 수로 표시하는 방식을 말한다고 보면 된다.
 
+### ✏️ Subnetting
 
+Subnetting은 IP 주소를 효울적으로 나누어 사용하기 위한 방법을 일컫는다.
 
-### ✏️ ATDD
+네트워크 성능 보장, 자원을 효율적으로 분배하기 위해 네트워크 영역과 호스트 영역을 다시 작은 영역으로 나누는데 이렇게 하면 IP 할당 범위를 더 작은 단위로 나눌 수 있게 된다.
+
+256개의 IP 주소를 가지는 C 클래스에서 ㄱ기업에게는 128개를 ㄴ, ㄷ기업에는 64개의 네트워크 주소를 할당할 수 있다.
+
+***192.168.10.0 / 24***
+
 
 
 ### ✏️ CIDR 계산기
 - [cidr.xyz](https://cidr.xyz/)
 - [ipaddressguide.com](https://www.ipaddressguide.com/)
 - [network00.com](https://network00.com/NetworkTools/IPv4AddressPlanner/)
+
+참고 자료
+- [네트워크 구축 및 운용_7주차_1_IP Address](https://www.youtube.com/watch?v=b7Wk-6w5vgg)
+- [IP 클래스, 서브넷 마스크, 서브넷팅 완벽 이해하기](https://inpa.tistory.com/entry/WEB-IP-%ED%81%B4%EB%9E%98%EC%8A%A4-%EC%84%9C%EB%B8%8C%EB%84%B7-%EB%A7%88%EC%8A%A4%ED%81%AC-%EC%84%9C%EB%B8%8C%EB%84%B7%ED%8C%85-%EC%B4%9D%EC%A0%95%EB%A6%AC)
