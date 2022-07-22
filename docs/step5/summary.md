@@ -45,7 +45,15 @@ public class LineTest {
 
 ### ✏️ Classist vs Mockist
 
+***Classist의 단위 테스트***
 
+테스트를 격리해야하는 대상은 코드가 아니라 또 다른 테스트
+
+테스트 간의 공유하는 의존성이 아니라면 실제 객체를 사용
+
+***Mockist의 단위 테스트***
+
+테스트 대상을 협력객체로 부터 격리하기 위해 테스트 대상이 의존하는 모든 것을 가짜 객체로 대체
 
 참고 자료
 - [테스트하기 쉬운 코드로 개발하기](https://www.youtube.com/watch?v=Cz_a2gQp63c)
