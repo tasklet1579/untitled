@@ -92,7 +92,7 @@ Subnetting은 IP 주소를 효울적으로 나누어 사용하기 위한 방법�
 
 호스트 ID의 두번째 비트까지 서브넷 구분 비트로 지정하게 되면 00, 01, 10, 11로 총 4개의 Subnet으로 분리되게 된다.
 
-### ✏️ CIDR 계산기
+### ✏️ Classless Inter-Domain Routing
 
 
 
