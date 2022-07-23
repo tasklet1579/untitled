@@ -11,7 +11,7 @@
 - 시간 기반 지표
   - 브라우저에서 발생하는 다양한 웹 이벤트 값을 측정하여 성능에 대한 목표치를 설정하는 것으로 대표 항목은 다음과 같다.
     - First Contentful Paint
-      - 콘텐츠 렌더링이 시작될 때까지 걸리는 시간
+      - 컨텐츠 렌더링이 시작될 때까지 걸리는 시간
     - Largest Contentful Paint
       - 가장 큰 이미지 또는 비디오가 렌더링을 시작할 때까지 걸리는 시간
     - First input delay
@@ -23,7 +23,9 @@
     - Cumulative Layout Shift
       - 사용자가 예상치 못한 레이아웃 이동을 경험하는 빈도를 수량화한 것
 - 규칙 기반 지표
-  - 
+  - 웹 성능 지표를 측정하여 사이트의 점수를 메기는 도구를 활용해 성능을 비교 분석, 개선할 수 있고 대표 도구는 다음과 같다.
+  - LightHouse
+  - [WebPageTest](https://www.webpagetest.org/)
 
 ✔️
 
