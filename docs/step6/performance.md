@@ -47,7 +47,21 @@
 
 [웹에 날개를 달아주는 웹 성능 최적화 기법](http://www.yes24.com/product/goods/96262886)
 
-✔️
+✔️지하철 노선도 서비스에서 개선이 필요하다고 생각하는 부분
+
+DNS Lookup Time
+- [What Is a DNS Lookup Time?](https://sematext.com/glossary/dns-lookup-time/)
+- [8 Tips on How to Reduce DNS Lookups and Speed Them Up](https://kinsta.com/blog/reduce-dns-lookups)
+
+텍스트 압축 사용
+- 페이지 로드 속도를 향상시키기 위해서는 리소스를 최적화하고 압축하여 전체 다운로드 크기를 최소화해야 한다.
+- 이미지를 제외한 대부분이 텍스트 콘텐츠로 구성되어 있고 대부분의 브라우저는 압축 프로그램을 내장하고 있다.
+- 서버에서 텍스트 압축을 활성화하는 방법에 대해 알아보자.
+
+Keep Alive Off
+- HTTP는 Connectionless 방식으로 연결을 매번 끊고 새로 생성하는 구조이다.
+- 연결을 유지하게 되면 커넥션을 맺고 끊는 데 작업이 없어지기 때문에 그만큼의 시간을 단축할 수 있다.
+- 바쁜 서버 환경에서는 모든 요청 마다 연결을 유지해야 하기 때문에 오히려 성능이 하락할 수 있다.
 
 ✔️
 
