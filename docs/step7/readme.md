@@ -25,13 +25,6 @@
   - [Testing in Spring Boot](https://www.baeldung.com/spring-boot-testing)
   - [Exploring the Spring Boot TestRestTemplate](https://www.baeldung.com/spring-boot-testresttemplate)
 
-Lombok 주의사항
-- 무분별한 setter 메서드 사용
-- 객체 간에 상호 참조하는 경우 무한 루프에 빠질 가능성
-- [Lombok 사용상 주의점(Pitfall)](https://kwonnam.pe.kr/wiki/java/lombok/pitfall)
-
-> 이번 과정에서는 Lombok 없이 미션을 진행해 본다.
-
 힌트
 
 http 디렉터리의 .http 파일(HTTP client)을 보고 어떤 요청을 받는지 참고한다.
