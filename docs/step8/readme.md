@@ -33,7 +33,10 @@
 - Smoke, Load, Stress 테스트 후 결과를 기록
 
 [답변](scale.sh)
-- 
+- jdk 설치
+- 방화벽 설정
+- nginx 실행
+- 애플리케이션 배포
 
 ---
 
