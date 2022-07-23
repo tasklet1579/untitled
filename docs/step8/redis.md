@@ -74,6 +74,9 @@ public class LineService {
                 @CacheEvict(value = CacheConfig.PATH, allEntries = true)
             }
     )
+    public void deleteLineById(Long id) {
+        lineRepository.deleteById(id);
+    }
     
     ...
 }
