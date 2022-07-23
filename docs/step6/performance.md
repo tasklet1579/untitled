@@ -47,8 +47,6 @@
 
 [웹에 날개를 달아주는 웹 성능 최적화 기법](http://www.yes24.com/product/goods/96262886)
 
-​
-
 ✔️ 지하철 노선도 서비스에서 개선이 필요하다고 생각하는 부분
 
 DNS Lookup Time
