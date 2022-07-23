@@ -32,7 +32,8 @@
 - Auto Scaling Group 생성하기
 - Smoke, Load, Stress 테스트 후 결과를 기록
 
-[답변](scale.md)
+[답변](scale.sh)
+- 
 
 ---
 
