@@ -21,7 +21,7 @@
 - TLS, HTTP/2
 
 [개선2](redis.md)
-
+- Redis
 ---
 
 ### 2. 스케일 아웃
