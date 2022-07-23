@@ -80,4 +80,67 @@ log_group_name = [로그그룹 이름]
 sudo service awslogs restart
 ```
 
-Metric 수집
+EC2 Metric 수집
+```
+wget https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
+sudo dpkg -i -E ./amazon-cloudwatch-agent.deb
+
+/opt/aws/amazon-cloudwatch-agent/bin/config.json
+{
+        "agent": {
+                "metrics_collection_interval": 60,
+                "run_as_user": "root"
+        },
+        "metrics": {
+                "metrics_collected": {
+                        "disk": {
+                                "measurement": [
+                                        "used_percent",
+                                        "used",
+                                        "total"
+                                ],
+                                "metrics_collection_interval": 60,
+                                "resources": [
+                                        "*"
+                                ]
+                        },
+                        "mem": {
+                                "measurement": [
+                                        "mem_used_percent",
+                                        "mem_total",
+                                        "mem_used"
+                                ],
+                                "metrics_collection_interval": 60
+                        }
+                }
+        }
+}
+
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -m ec2 -a status
+
+{
+        "status": "running",
+        "starttime": "2021-03-20T15:12:07+00:00",
+        "configstatus": "configured",
+        "cwoc_status": "stopped",
+        "cwoc_starttime": "",
+        "cwoc_configstatus": "not configured",
+        "version": "1.247347.5b250583"
+}
+```
+
+Spring Actuator Metric 수집
+```
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.cloud:spring-cloud-starter-aws:2.2.1.RELEASE")
+    implementation("io.micrometer:micrometer-registry-cloudwatch")
+} 
+
+cloud.aws.stack.auto=false  # 로컬에서 실행시 AWS stack autoconfiguration 수행과정에서 발생하는 에러 방지
+cloud.aws.region.static=ap-northeast-2
+management.metrics.export.cloudwatch.namespace=  # 해당 namespace로 Cloudwatch 메트릭을 조회 가능
+management.metrics.export.cloudwatch.batch-size=20
+management.endpoints.web.exposure.include=*
+```
