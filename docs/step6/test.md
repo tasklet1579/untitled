@@ -64,7 +64,71 @@ Stress
 - 측정 시간 : 20분
 ```
 
-✔️ ㅇㅇ
+✔️ Smoke, Load, Stress 테스트 스크립트
+
+테스트 순서
+- 랜딩 페이지 접속
+- 아이디와 패스워드를 사용하여 로그인
+- 지하철역 조회
+- 시작역부터 출발역까지의 최단거리 경로 검색
+- 즐겨찾기 등록
+
+Smoke
+- k6 run --out influxdb=http://localhost:8086/k6 smoke.js
+```
+import http from 'k6/http';
+import {check, sleep} from 'k6';
+
+export let options = {
+   vus: 2,
+   duration: '10m',
+
+   thresholds: {
+      http_req_duration: ['p(99)<1500'], // 99% of requests must complete below 1.5s
+   },
+};
+
+const BASE_URL = 'https://www.tasklet1579.p-e.kr/';
+const USERNAME = 'tasklet1579@next.co.kr';
+const PASSWORD = 'test1234';
+
+export default () => {
+   let homeUrl = `${BASE_URL}`;
+   let lendingPageResponse = http.get(homeUrl);
+   check_lending_page(lendingPageResponse);
+
+   let loginResponse = login();
+   check_login_access_token(loginResponse);
+   
+   sleep(1);
+};
+
+function login() {
+   var body = JSON.stringify({
+      email: USERNAME,
+      password: PASSWORD,
+   });
+   var headers = {
+      headers: {
+         'Content-Type': 'application/json',
+      },
+   };
+
+   return http.post(`${BASE_URL}/login/token`, body, headers);
+}
+
+function check_lending_page(lendingPageResponse) {
+   check(lendingPageResponse, {
+      'lending page running': (response) => response.status === 200
+   });
+}
+
+function check_login_access_token(loginResponse) {
+   check(loginResponse, {
+      'logged in successfully': (response) => response.json('accessToken') !== '',
+   });
+}
+```
 
 ✔️ ㅇㅇ
 
