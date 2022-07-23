@@ -15,7 +15,12 @@
 - 부하테스트 각 시나리오의 요청시간을 목푯값 이하로 개선
   - 개선 전 / 후를 직접 계측하여 확인
 
-[개선1](nginx.conf), [개선2](improve-1.md)
+[개선1](nginx.conf)
+- gzip
+- cache
+- TLS, HTTP/2
+
+[개선2](improve-1.md)
 
 ---
 
