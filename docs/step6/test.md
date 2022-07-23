@@ -61,7 +61,7 @@ Load
 
 Stress
 - VUser : 점진적으로 증가시킨다
-- 측정 시간 : 20분
+- 측정 시간 : 5분
 ```
 
 ✔️ Smoke, Load, Stress 테스트 스크립트
@@ -119,13 +119,13 @@ function login() {
 
 function check_lending_page(lendingPageResponse) {
    check(lendingPageResponse, {
-      'lending page running': (response) => response.status === 200
+      '랜딩 페이지 점검': (response) => response.status === 200
    });
 }
 
 function check_login_access_token(loginResponse) {
    check(loginResponse, {
-      'logged in successfully': (response) => response.json('accessToken') !== '',
+      '로그인 후 토큰 획득': (response) => response.json('accessToken') !== '',
    });
 }
 ```
@@ -249,7 +249,10 @@ Stress
 ```
 export let options = {
    stages: [
-      { duration: '1m', target: 1024 },
+      { duration: '1m', target: 64 },
+      { duration: '1m', target: 128 },
+      { duration: '1m', target: 256 },
+      { duration: '1m', target: 512 },
       { duration: '1m', target: 1024 },
    ],
    thresholds: {
