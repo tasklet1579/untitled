@@ -15,7 +15,7 @@
   - 웹 성능 예산을 작성
   - [WebPageTest](https://www.webpagetest.org/), [PageSpeed](https://pagespeed.web.dev/) 등 테스트해보고 개선이 필요한 부분을 파악
 
-답변
+[답변](performance.md)
 
 ---
 
@@ -33,7 +33,7 @@
   - 데이터를 조회하는데 여러 데이터를 참조하는 페이지
 - Smoke, Load, Stress 테스트 후 결과를 기록
 
-답변
+[답변](test.md)
 
 ---
 
@@ -44,4 +44,4 @@
 - 로그 설정하기
 - Cloudwatch로 모니터링
 
-답변
+[답변](logging.md)
