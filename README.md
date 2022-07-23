@@ -44,7 +44,7 @@
 
 ✔️ 5주차 : 인수 테스트 기반 TDD : [미션 설명](docs/step5/readme.md), [내용 정리](docs/step5/summary.md), [도메인 정리](docs/step5/domain.md)
 
-✔️ 6주차 : 서비스 진단하기 : [미션 설명](docs/step6/readme.md)
+✔️ 6주차 : 서비스 진단하기 : [미션 설명](docs/step6/readme.md), [내용 정리](docs/step6/summary.md)
 
 ✔️ 7주차 : 레거시 코드 리팩토링 : [미션 설명](docs/step7/readme.md), 내용 정리
 
