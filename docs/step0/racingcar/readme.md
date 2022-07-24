@@ -81,6 +81,7 @@ honux : -----
   - RacingCar : 자동차
   - RacingCarName : 자동차 이름
   - RacingCarNames : 자동차 이름 일급 컬렉션
+  - RandomIntegers : 특정 구간의 숫자를 저장하는 일급 컬렉션
   - RandomIntegerGenerator : 숫자 생성기
   - RacingWinner : 자동차 경주 게임 우승자
 - view
