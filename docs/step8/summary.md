@@ -29,7 +29,7 @@ Application Server
 - 자바 진영에서 동적인 웹 페이지를 구현하기 위해 만든 표준 모델
 - Servlet 표준에 대한 interface 구현체는 Servlet Container(tomcat, jetty)가 제공함
 
-***요청, 응답 과정***
+요청, 응답 과정
 
 1. 사용자가 브라우저를 통해 서버에 HTTP 요청을 보낸다.
 2. 요청을 받은 서블릿 컨테이너는 request, response 두 객체를 만든다.
