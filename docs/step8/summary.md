@@ -59,7 +59,7 @@ HAVING COUNT(Country) = 1
 6. 모두 진행한 이후, ORDER BY를 통해 집계한 데이터 집합을 정렬한다.
 ```
 
-서브쿼리
+***서브쿼리***
 ```
 SELECT (SELECT COUNT(*) FROM [Customers] WHERE Country = 'Germany') AS `Germany인 사람`
     ,  (SELECT COUNT(*) FROM [Customers] WHERE Country = 'Mexico') AS `Mexico인 사람`
@@ -81,3 +81,12 @@ SELECT *
 
 ```
 WHERE 절에 추가하기
+
+***조인문***
+```
+SELECT * FROM Products 
+  JOIN OrderDetails 
+    ON Products.ProductID = OrderDetails.ProductID 
+ WHERE Products.ProductID IN (1, 30)
+```
+
