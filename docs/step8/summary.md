@@ -23,6 +23,9 @@ Application Server
   - 조회 성능 개선
   - 비동기 처리
   - 데이터 캐싱 등
+    - ETag
+    - Cache-Control
+      - 일부 파일에 변경이 발생한 경우 배포 시간 또는 버전 등을 활용해 URL을 변경한다.
 
 ### ✏️ Servlet이란?
 
