@@ -90,4 +90,8 @@ SELECT *
     ON Products.ProductID = OrderDetails.ProductID 
  WHERE Products.ProductID IN (1, 30)
 ```
+ProductID 1과 30을 검색하기 위해 Products 테이블을 먼저 찾는데 이처럼 먼저 접근하는 테이블을 드라이빙 테이블, 검색 결과를 통해 뒤늦게 데이터를 검색하는 테이블을 드리븐 테이블이라고 한다.
+
+가능하면 적은 결과가 반환될 것으로 예상되는 테이블을 드라이빙 테이블로 선정해야 하고 드라이빙 테이블의 추출 건수가 곧 드리븐 테이블의 액세스 반복 횟수가 되기 때문이다.
+
 
