@@ -119,7 +119,7 @@ ProductID 1과 30을 검색하기 위해 Products 테이블을 먼저 찾는데 
 🎯 쿼리 동작 방식
 
 Query Caching
-- SQL문이 Key, 쿼리의 실행결과가 Value인 Map
+- SQL문이 Key, 쿼리의 실행결과가 Value인 Map 형태
 - 데이터가 변경되면 모두 삭제해야 하는데 이는 동시 처리 성능 저하를 유발하고 많은 버그의 원인이 되어 MySQL 8.0으로 올라오면서 제거되었다.
 
 Parsing
@@ -139,7 +139,14 @@ Handler (Storage Engine)
 
 🎯 Index Range Scan과 Table Full Scan
 
+Index Range Scan
+- Random access와 Single Block I/O 방식으로 레코드 하나를 읽기 위해 매번 I/O가 발생한다.
+- 읽을 데이터가 일정량을 넘으면 인덱스보다 Table Full Scan이 유리하다.
+- Index를 사용할 경우 스캔 범위를 줄여 Random I/O 횟수를 감소시키는 것이 중요하다.
 
+Table Full Scan
+- Sequential access와 Multiblock I/O 방식으로 효율적으로 디스크를 읽는다.
+- 
 
 ### ✏️ DB 서버 튜닝
 
