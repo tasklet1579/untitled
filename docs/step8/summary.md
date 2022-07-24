@@ -10,6 +10,9 @@ Web Server
   - 불필요한 작업을 지연로딩
   - 스크립트 병합하여 요청수 최소화
   - HTTP 프로토콜 개선
+    - TCP 기반의 HTTP는 요청마다 Connection이 생성되어 연결 비용이 매우 크다.
+      - 3way handshake
+      - slow start로
 
 Application Server
 - 비즈니스 로직을 관리
