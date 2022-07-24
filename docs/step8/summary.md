@@ -84,7 +84,8 @@ WHERE 절에 추가하기
 
 ***조인문***
 ```
-SELECT * FROM Products 
+SELECT * 
+  FROM Products 
   JOIN OrderDetails 
     ON Products.ProductID = OrderDetails.ProductID 
  WHERE Products.ProductID IN (1, 30)
