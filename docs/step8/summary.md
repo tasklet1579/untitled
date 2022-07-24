@@ -43,18 +43,19 @@ Application Server
 ### ✏️ SQL 기본
 
 ```
-SELECT Country, COUNT(*) AS `고객 수` 
+SELECT Country
+    ,  COUNT(*) AS `고객 수` 
   FROM Customers 
  WHERE Country <> 'Norway'
  GROUP BY Country
 HAVING COUNT(Country) = 1
  ORDER BY Country;
 
-1. FROM에서 데이터 집합을 만듭니다. 여기서는 Customers 테이블의 데이터를 가져왔네요.
-2. WHERE는 FROM에서 만든 데이터 집합을 조건에 맞게 걸러내는데요.
-3. GROUP BY는 WHERE에서 필터링한 (조건에 맞는 데이터를 걸러낸) 데이터를 그룹화합니다.
-4. HAVING은 GROUP BY에서 집계한 데이터 집합을 다시 조건에 맞게 필터링할 때 사용해요
-5. SELECT에서는 그룹화하고 필터링한 데이터 집합을 집계합니다.
-6. 모두 진행한 이후, ORDER BY를 통해 집계한 데이터 집합을 정렬합니다.
+1. FROM에서 데이터 집합을 만든다.
+2. WHERE는 FROM에서 만든 데이터 집합을 조건에 맞게 걸러낸다.
+3. GROUP BY는 WHERE에서 필터링한 (조건에 맞는 데이터를 걸러낸) 데이터를 그룹화한다.
+4. HAVING은 GROUP BY에서 집계한 데이터 집합을 다시 조건에 맞게 필터링한다.
+5. SELECT에서는 그룹화하고 필터링한 데이터 집합을 집계한다.
+6. 모두 진행한 이후, ORDER BY를 통해 집계한 데이터 집합을 정렬한다.
 ```
 
