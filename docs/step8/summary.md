@@ -146,7 +146,6 @@ Index Range Scan
 
 Table Full Scan
 - Sequential access와 Multiblock I/O 방식으로 효율적으로 디스크를 읽는다.
-- 
 
 ### ✏️ DB 서버 튜닝
 
