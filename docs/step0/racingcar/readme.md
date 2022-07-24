@@ -78,11 +78,11 @@ honux : -----
 ### 🔑️️️ 책임과 역할 분리
 
 - model
-    - RacingCar : 자동차. 
-    - RacingCarName : 자동차 이름.
-    - RacingCarNames : 자동차 이름 일급 컬렉션.
-    - RandomIntegerGenerator : 숫자 생성기.
-    - RacingWinner : 자동차 경주 게임 우승자.
+    - RacingCar : 자동차
+    - RacingCarName : 자동차 이름
+    - RacingCarNames : 자동차 이름 일급 컬렉션
+    - RandomIntegerGenerator : 숫자 생성기
+    - RacingWinner : 자동차 경주 게임 우승자
 - view
   - RacingGameInputView : 사용자의 입력을 처리함
   - RacingGameOutputView : 사용자에게 메시지를 전달함
