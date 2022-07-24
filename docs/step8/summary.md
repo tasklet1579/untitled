@@ -116,7 +116,7 @@ ProductID 1과 30을 검색하기 위해 Products 테이블을 먼저 찾는데 
 
 참고 : [MySQL 내부 구조](https://brunch.co.kr/@jehovah/21)
 
-A. 쿼리 동작 방식
+🎯 쿼리 동작 방식
 
 Query Caching
 - SQL문이 Key, 쿼리의 실행결과가 Value인 Map
@@ -137,7 +137,7 @@ Handler (Storage Engine)
 - MySQL 실행엔진의 요청에 따라 데이터를 디스크로 저장하고 디스크로부터 읽어오는 역할을 담당한다.
 -  MySQL 엔진에서는 Storage 엔진으로부터 받은 레코드를 조인하거나 정렬하는 작업을 수행한다.
 
-B. Index Range Scan과 Table Full Scan
+🎯 Index Range Scan과 Table Full Scan
 
 
 
