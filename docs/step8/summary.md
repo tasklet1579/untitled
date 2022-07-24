@@ -1,3 +1,23 @@
+### ✏️ 웹 성능 개선하기
+
+Web Server
+- 커넥션을 관리
+  - 캐싱 설정
+  - CDN 사용하기
+  - keep-alive 설정
+  - gzip 압축
+  - 불필요한 다운로드 제거
+  - 불필요한 작업을 지연로딩
+  - 스크립트 병합하여 요청수 최소화
+  - HTTP 프로토콜 개선
+
+Application Server
+- 비즈니스 로직을 관리
+  - 비즈니스 로직 개선
+  - 조회 성능 개선
+  - 비동기 처리
+  - 데이터 캐싱 등
+
 ### ✏️ Servlet이란?
 
 - 자바 진영에서 동적인 웹 페이지를 구현하기 위해 만든 표준 모델
@@ -10,19 +30,3 @@
 3. 서블릿 컨테이너는 요청을 처리할 수 있는 서블릿을 찾아서 스레드를 할당하고 request, response 객체를 전달한다
 4. HTTP method 에 따라 doGet(), doPost() 등 메소드를 호출한다.
 5. 요청 결과를 응답한 후 request, response 객체를 제거하고 자원을 반납한다.
-
-### ✏️ Servlet이란?
-
-Servlet이란?
-
-### ✏️ Servlet이란?
-
-Servlet이란?
-
-### ✏️ Servlet이란?
-
-Servlet이란?
-
-### ✏️ Servlet이란?
-
-Servlet이란?
