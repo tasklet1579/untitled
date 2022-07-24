@@ -39,3 +39,22 @@ Application Server
 3. 서블릿 컨테이너는 요청을 처리할 수 있는 서블릿을 찾아서 스레드를 할당하고 request, response 객체를 전달한다
 4. HTTP method 에 따라 doGet(), doPost() 등 메소드를 호출한다.
 5. 요청 결과를 응답한 후 request, response 객체를 제거하고 자원을 반납한다.
+
+### ✏️ SQL 기본
+
+```
+SELECT Country, COUNT(*) AS `고객 수` 
+  FROM Customers 
+ WHERE Country <> 'Norway'
+ GROUP BY Country
+HAVING COUNT(Country) = 1
+ ORDER BY Country;
+
+1. FROM에서 데이터 집합을 만듭니다. 여기서는 Customers 테이블의 데이터를 가져왔네요.
+2. WHERE는 FROM에서 만든 데이터 집합을 조건에 맞게 걸러내는데요.
+3. GROUP BY는 WHERE에서 필터링한 (조건에 맞는 데이터를 걸러낸) 데이터를 그룹화합니다.
+4. HAVING은 GROUP BY에서 집계한 데이터 집합을 다시 조건에 맞게 필터링할 때 사용해요
+5. SELECT에서는 그룹화하고 필터링한 데이터 집합을 집계합니다.
+6. 모두 진행한 이후, ORDER BY를 통해 집계한 데이터 집합을 정렬합니다.
+```
+
