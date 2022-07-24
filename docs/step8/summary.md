@@ -135,6 +135,12 @@ thread_cache_size는 지나치게 높여둘 필요는 없으며 일반적으로 
 
 버퍼는 mysqld에서 내부적으로 하나만 확보되는 Global Buffer와 Thread(Connection)별로 확보되는 Thread Buffer가 있습니다. Thread Buffer에 많은 메모리를 할당하면 성능이 올라가지만, 설정값 * Connection 수만큼 확보하므로 Connection이 갑자기 늘어나면 메모리가 부족해져 swap이 발생할 수도 있다.
 - innodb_buffer_pool_size : InnoDB의 데이터나 인덱스를 캐시하기 위한 메모리상의 영역, 글로벌 버퍼이므로 크게 할당할 것을 권한다. 보통 시스템 전체 메모리의 80% 수준으로 설정한다. (최대 512MB)
+- key_buffer_size : 인덱스를 메모리에 저장하는 버퍼 크기를 의미하며, 보통 총 메모리 크기의 25% 정도로 설정한다.
+- Key Buffer 사용률은 1 - ((Key_reads/Key_read_requests) * 100)이다. 90% 이상일 경우 key_buffer_size가 효율적으로 설정되어 있다고 판단할 수 있다.
+
+```
+mysql> SHOW STATUS LIKE '%key%';
+```
 
 커넥션 튜닝
 ```
