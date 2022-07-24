@@ -119,10 +119,14 @@ Filesystem
 A. 쿼리 동작 방식
 
 Query Caching
+- SQL문이 Key, 쿼리의 실행결과가 Value인 Map
+- 데이터가 변경되면 모두 삭제해야 하는데 이는 동시 처리 성능 저하를 유발하고 많은 버그의 원인이 되어 MySQL 8.0으로 올라오면서 제거되었다.
 
 Parsing
+- 사용자로부터 요청된 SQL을 잘게 쪼개서 서버가 이해할 수 있는 수준으로 분리한다.
 
 Preprocessor
+- 해당 쿼리가 문법적으로 틀리지 않은지 확인하여 부정확하다면 여기서 처리를 중단한다.
 
 Optimization
 
