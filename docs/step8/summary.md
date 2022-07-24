@@ -94,4 +94,66 @@ ProductID 1과 30을 검색하기 위해 Products 테이블을 먼저 찾는데 
 
 가능하면 적은 결과가 반환될 것으로 예상되는 테이블을 드라이빙 테이블로 선정해야 하고 드라이빙 테이블의 추출 건수가 곧 드리븐 테이블의 액세스 반복 횟수가 되기 때문이다.
 
+### ✏️ DB 최적화 대상
 
+Client
+- 복수 건의 레코드를 한번의 호출로 집합 처리하거나, 두 개 이상의 쿼리를 한 쿼리로 통합 처리함으로써 호출 수를 줄일 수 있다.
+- JDBC Statement는 쿼리 문장 분석, 컴파일, 실행의 단계를 캐싱하는데 PreparedStatement는 처음 한 번만 세 단계를 거친 후 캐시에 담아서 재사용한다.
+- DB Connection Pool을 사용하여 객체를 생성하는 부분에서 발생하는 대기시간을 줄이고 네트워크 부담을 줄일 수 있다.
+- Fetchsize 조정하거나 Paging을 활용한다.
+
+Database Engine
+- 파일 시스템에 저장된 데이터가 조회되면 해당 데이터를 메모리에 저장해 이후 동일 데이터 조회 시 파일 시스템의 물리적인 입출력이 발생하지 않도록 한다.
+- 서버 파라미터를 튜닝한다.
+
+Filesystem
+- SSD를 사용한다. 
+- SQL을 최적화하여 필요 이상의 데이터 블록을 읽는 것을 방지한다.
+
+[쿼리 최적화 : 빠른 쿼리를 위한 7가지 체크리스트](https://medium.com/watcha/%EC%BF%BC%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94-%EC%B2%AB%EA%B1%B8%EC%9D%8C-%EB%B3%B4%EB%8B%A4-%EB%B9%A0%EB%A5%B8-%EC%BF%BC%EB%A6%AC%EB%A5%BC-%EC%9C%84%ED%95%9C-7%EA%B0%80%EC%A7%80-%EC%B2%B4%ED%81%AC-%EB%A6%AC%EC%8A%A4%ED%8A%B8-bafec9d2c073)
+
+### ✏️ SQL 최적화 대상
+
+참고 : [MySQL 내부 구조](https://brunch.co.kr/@jehovah/21)
+
+### ✏️ DB 서버 튜닝
+
+메모리 튜닝
+
+***Thread***
+
+MySQL은 커넥션마다 하나의 Thread를 생성하여 요청을 처리하는데 Thread를 메모리에 할당하고 해제하는데 비용이 크므로 이를 줄일 필요가 있다.
+```
+# 현재 쓰레드(연결) 개수 확인
+mysql> SELECT * FROM performance_schema.threads
+mysql> SHOW STATUS LIKE '%THREAD%';
+```
+
+thread_cache_size는 지나치게 높여둘 필요는 없으며 일반적으로 threads_connected의 피크 치보다 약간 낮은 수치 정도를 설정하는 것이 좋다. 이를 통해 쓰레드가 생성되고 소멸되면서 겪게 되는 메모리, 각종 자원, 시간 등의 낭비를 줄일 수 있다.
+
+***Caching***
+
+버퍼는 mysqld에서 내부적으로 하나만 확보되는 Global Buffer와 Thread(Connection)별로 확보되는 Thread Buffer가 있습니다. Thread Buffer에 많은 메모리를 할당하면 성능이 올라가지만, 설정값 * Connection 수만큼 확보하므로 Connection이 갑자기 늘어나면 메모리가 부족해져 swap이 발생할 수도 있다.
+- innodb_buffer_pool_size : InnoDB의 데이터나 인덱스를 캐시하기 위한 메모리상의 영역, 글로벌 버퍼이므로 크게 할당할 것을 권한다. 보통 시스템 전체 메모리의 80% 수준으로 설정한다. (최대 512MB)
+
+커넥션 튜닝
+```
+mysql> SHOW VARIABLES LIKE '%max_connection%';
+mysql> SHOW STATUS LIKE '%CONNECT%';
+mysql> SHOW STATUS LIKE '%CLIENT%';
+```
+
+connect_timeout
+- MySQL이 클라이언트로부터 접속 요청을 받는 경우 몇 초까지 기다릴지를 설정하는 변수로, 기본 값은 5초이며 일반적으로 수정할 필요는 없다.
+
+Interactive_timeout
+- ‘mysql>’과 같은 콘솔이나 터미널 상에서의 클라이언트 접속을 의미하며, 기본 값으로 8시간이 잡혀 있으나 1시간 정도로 낮추는 것이 좋다.
+
+wait_timeout
+- 접속한 후 쿼리가 들어올 때까지 기다리는 시간으로, 접속이 많은 DBMS에서는 이 값을 낮춰 sleep 상태의 Connection들을 정리하여 전체 성능을 향상시킬 수 있습니다. 하지만 값을 너무 낮추게 되면 지나치게 잦은 커넥션이 발생할 수 있으므로, 보통 15~20 사이의 값을 설정합니다. Aborted client는 2% 아래인 것이 바람직한 상태다.
+
+max_connections
+- 서버가 허용하는 최대한의 커넥션 수입니다. 서버의 사양에 따라 달라질 수 있으며 일반적으로 120~250개 정도로 설정합니다. 하지만 접속이 많고 고용량 서버의 경우 1000개 정도의 높은 값을 설정하는 것도 가능하니, Too many connection 에러가 발생하지 않도록 적절한 값을 설정하는 것이 중요하다.
+
+back_log
+- max_connection 설정값 이상의 접속이 발생할 때 얼마만큼의 커넥션을 큐에 보관할지에 대한 설정 값으로, 기본 값은 50이며 접속이 많은 서버의 경우 이 값을 늘릴 필요가 있다.
