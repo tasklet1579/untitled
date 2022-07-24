@@ -116,6 +116,22 @@ Filesystem
 
 참고 : [MySQL 내부 구조](https://brunch.co.kr/@jehovah/21)
 
+A. 쿼리 동작 방식
+
+Query Caching
+
+Parsing
+
+Preprocessor
+
+Optimization
+
+Handler (Storage Engine)
+
+B. Index Range Scan과 Table Full Scan
+
+
+
 ### ✏️ DB 서버 튜닝
 
 메모리 튜닝
