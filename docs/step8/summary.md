@@ -12,7 +12,7 @@ Web Server
   - HTTP 프로토콜 개선
     - TCP 기반의 HTTP는 요청마다 Connection이 생성되어 연결 비용이 매우 크다.
       - 3way handshake
-      - slow start로
+      - slow start
 
 Application Server
 - 비즈니스 로직을 관리
