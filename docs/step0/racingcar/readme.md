@@ -79,11 +79,12 @@ honux : -----
 
 - model
   - RacingCar : 자동차 모델
+  - RacingCars : 자동차 모델 일급 컬렉션. 최종 우승자를 찾음
   - RacingCarName : 자동차 이름 모델
   - RacingCarNames : 자동차 이름 일급 컬렉션
   - RandomIntegers : 특정 구간의 숫자를 저장하는 일급 컬렉션
   - RandomIntegerGenerator : 숫자 생성기
-  - RacingWinner : 자동차 경주 게임 우승자 모델
+  - RacingWinners : 자동차 경주 게임 우승자 모델
 - view
   - RacingGameInputView : 사용자의 입력을 처리함
   - RacingGameOutputView : 사용자에게 메시지를 전달함
